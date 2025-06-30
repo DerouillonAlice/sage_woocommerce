@@ -143,5 +143,3 @@ php_value post_max_size 20M
 ```
 
 Fait avec ❤️ par Alice
-# sage_woocommerce
-# sage_woocommerce
