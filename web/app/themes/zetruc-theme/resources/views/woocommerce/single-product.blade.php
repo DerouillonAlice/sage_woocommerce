@@ -36,6 +36,12 @@ the readme will list any important changes.
         <div class="md:w-1/2 flex flex-col justify-between">
           <div>
             <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ get_the_title() }}</h1>
+            @if($subtitle)
+              <div class="text-gray-500 text-lg mb-2">{{ $subtitle }}</div>
+            @endif
+            @if($highlight)
+              <div class="bg-yellow-100 rounded p-4 mb-4">{{ $highlight }}</div>
+            @endif
             <div class="flex flex-wrap items-center gap-2 mb-2">
               @foreach ($product->get_category_ids() as $cat_id)
                 <span class="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">{{ get_term($cat_id)->name }}</span>

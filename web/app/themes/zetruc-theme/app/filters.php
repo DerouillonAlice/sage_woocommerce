@@ -20,21 +20,3 @@ add_filter('sage-woocommerce/templates', function ($paths) {
     return $paths;
 });
 
-add_filter('sage-woocommerce/template', function ($template, $template_name, $args) {
-    $blade_templates = [
-        'cart',
-        'checkout',
-        'myaccount',
-        'order-received',
-    ];
-
-    foreach ($blade_templates as $blade_template) {
-        if (strpos($template_name, $blade_template) !== false) {
-            $possible = locate_template("woocommerce/{$blade_template}.blade.php");
-            if ($possible) {
-                return $possible;
-            }
-        }
-    }
-    return $template;
-}, 20, 3);

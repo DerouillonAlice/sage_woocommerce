@@ -23,27 +23,6 @@ add_filter('block_editor_settings_all', function ($settings) {
     return $settings;
 });
 
-
-add_filter('sage-woocommerce/template', function ($template, $template_name, $args) {
-    $blade_templates = [
-        'cart',
-        'checkout',
-        'myaccount',
-        'order-received',
-        // Ajoute ici d'autres templates WooCommerce si besoin
-    ];
-
-    foreach ($blade_templates as $blade_template) {
-        if (strpos($template_name, $blade_template) !== false) {
-            $possible = locate_template("woocommerce/{$blade_template}.blade.php");
-            if ($possible) {
-                return $possible;
-            }
-        }
-    }
-    return $template;
-}, 20, 3);
-
 /**
  * Inject scripts into the block editor.
  *
