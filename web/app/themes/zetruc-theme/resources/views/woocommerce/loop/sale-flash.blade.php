@@ -24,7 +24,28 @@ global $post, $product;
 ?>
 <?php if ( $product->is_on_sale() ) : ?>
 
-	<?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+	<?php 
+	// Calculer le pourcentage de réduction
+	$percentage = '';
+	if ( $product->get_type() === 'variable' ) {
+		$percentage = esc_html__( 'Promo', 'woocommerce' );
+	} else {
+		$regular_price = $product->get_regular_price();
+		$sale_price = $product->get_sale_price();
+		if ( $regular_price && $sale_price ) {
+			$percentage = '-' . round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 ) . '%';
+		} else {
+			$percentage = esc_html__( 'Promo', 'woocommerce' );
+		}
+	}
+	
+	echo apply_filters( 'woocommerce_sale_flash', 
+		'<span class="onsale absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-lg z-10 ">' . 
+		$percentage . 
+		'</span>', 
+		$post, $product 
+	); 
+	?>
 
 	<?php
 endif;

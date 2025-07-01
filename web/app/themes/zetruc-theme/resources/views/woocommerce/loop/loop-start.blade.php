@@ -19,11 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<ul class="products grid gap-6 
+<ul class="products grid gap-6 mt-5
    grid-cols-1 
    sm:grid-cols-2 
    lg:grid-cols-3 
    xl:grid-cols-4 
-   data-[view=list]:grid-cols-1 
-   data-[view=list]:gap-4
    transition-all duration-300">

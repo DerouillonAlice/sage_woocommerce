@@ -14,21 +14,9 @@ The Template for displaying product archives, including the main shop page which
 
   <div class="container mx-auto px-4 lg:px-6">
     @if (woocommerce_product_loop())
+    <div class="mb-8 flex justify-end gap-16 items-center">
       @php do_action('woocommerce_before_shop_loop'); @endphp
-      
-      {{-- Barre d'outils avec filtres et tri --}}
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-            @include('woocommerce.loop.result-count')
-            
-            </div>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-            @include('woocommerce.loop.orderby')
-          </div>
-        </div>
-      </div>
+    </div>
 
       <div class="products-container" data-view="grid">
         @include('woocommerce.loop.loop-start')
