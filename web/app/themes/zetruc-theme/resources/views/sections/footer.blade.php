@@ -1,4 +1,4 @@
-<footer class="bottom-0 fixed w-full ">
+<footer class="bottom-0 w-full ">
   <div class="container mx-auto px-6 py-8">
 
     {{-- Copyright --}}
