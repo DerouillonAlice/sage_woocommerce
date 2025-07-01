@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+/* Couleurs principales */
+  --color-primary: oklch(0.6 0.15 240);        /* Bleu  */
+  --color-primary-50: oklch(0.95 0.05 240);   
+  --color-primary-100: oklch(0.9 0.08 240);   
+  --color-primary-500: oklch(0.6 0.15 240);    
+  --color-primary-600: oklch(0.5 0.15 240);   
+  --color-primary-700: oklch(0.4 0.15 240);    
+  
+  /* Couleurs secondaires */
+  --color-secondary: oklch(0.7 0.12 150);      /* Vert  */
+  --color-secondary-50: oklch(0.95 0.05 150); 
+  --color-secondary-100: oklch(0.9 0.08 150);  
+  --color-secondary-500: oklch(0.7 0.12 150);  
+  --color-secondary-600: oklch(0.6 0.12 150);  
+  
+  /* Couleurs d'accent */
+  --color-accent: oklch(0.65 0.18 30);         /* Orange/Rouge */
+  --color-warning: oklch(0.75 0.15 60);        /* Jaune */
+  --color-success: oklch(0.7 0.12 150);        /* Vert */
+  --color-error: oklch(0.6 0.2 10);            /* Rouge */
+  
+  /* Couleurs neutres  */
+  --color-gray-50: oklch(0.98 0.005 250);
+  --color-gray-100: oklch(0.95 0.01 250);
+  --color-gray-200: oklch(0.9 0.015 250);
+  --color-gray-300: oklch(0.8 0.02 250);
+  --color-gray-400: oklch(0.65 0.02 250);
+  --color-gray-500: oklch(0.5 0.015 250);
+  --color-gray-600: oklch(0.4 0.01 250);
+  --color-gray-700: oklch(0.3 0.008 250);
+  --color-gray-800: oklch(0.2 0.005 250);
+  --color-gray-900: oklch(0.1 0.003 250);
+}

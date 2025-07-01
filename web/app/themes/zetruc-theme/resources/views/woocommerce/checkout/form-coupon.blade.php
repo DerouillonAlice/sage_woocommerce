@@ -22,30 +22,16 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 }
 
 ?>
-<div class="woocommerce-form-coupon-toggle">
+<div class="woocommerce-form-coupon-toggle mb-4">
 	<?php
-		/**
-		 * Filter checkout coupon message.
-		 *
-		 * @param string $message coupon message.
-		 * @return string Filtered message.
-		 *
-		 * @since 1.0.0
-		 */
-		wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'woocommerce' ) . ' <a href="#" role="button" aria-label="' . esc_attr__( 'Enter your coupon code', 'woocommerce' ) . '" aria-controls="woocommerce-checkout-form-coupon" aria-expanded="false" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' );
+		wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message',
+			'<span class="font-medium text-gray-700">' . esc_html__( 'Vous avez un code promo ?', 'woocommerce' ) . '</span> <a href="#" role="button" aria-label="' . esc_attr__( 'Entrer votre code promo', 'woocommerce' ) . '" aria-controls="woocommerce-checkout-form-coupon" aria-expanded="false" class="showcoupon text-blue-600 hover:underline font-semibold">' . esc_html__( 'Cliquez ici pour le saisir', 'woocommerce' ) . '</a>'
+		), 'notice' );
 	?>
 </div>
 
-<form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none" id="woocommerce-checkout-form-coupon">
-
-	<p class="form-row form-row-first">
-		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
-		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-	</p>
-
-	<p class="form-row form-row-last">
-		<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-	</p>
-
-	<div class="clear"></div>
+<form class="checkout_coupon woocommerce-form-coupon bg-white  p-6 flex flex-col md:flex-row items-center gap-4 mb-8" method="post" style="display:none" id="woocommerce-checkout-form-coupon">
+	<label for="coupon_code" class="sr-only"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
+	<input type="text" name="coupon_code" class="input-text w-full md:w-64 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="<?php esc_attr_e( 'Code promo', 'woocommerce' ); ?>" id="coupon_code" value="" />
+	<button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Appliquer', 'woocommerce' ); ?></button>
 </form>

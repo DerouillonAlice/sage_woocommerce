@@ -30,11 +30,11 @@ do_action( 'woocommerce_before_account_navigation' );
 				$is_logout = $endpoint === 'customer-logout';
 				$link_classes = 'block px-4 py-2 rounded-lg transition-colors duration-150 font-medium ';
 				if ($is_logout) {
-					$link_classes .= 'text-red-600 hover:bg-red-100 hover:text-red-700';
+					$link_classes .= 'text-error hover:bg-error-50 hover:text-error-600';
 				} else {
-					$link_classes .= 'text-gray-700 hover:bg-blue-100 hover:text-blue-700 ';
+					$link_classes .= 'text-gray-700 hover:bg-primary-50 hover:text-primary-700 ';
 					if (wc_is_current_account_menu_item($endpoint)) {
-						$link_classes .= 'bg-blue-600 text-white hover:bg-blue-700 ';
+						$link_classes .= 'bg-primary-600 text-white hover:bg-primary-700 hover:text-white ';
 					}
 				}
 			?>
