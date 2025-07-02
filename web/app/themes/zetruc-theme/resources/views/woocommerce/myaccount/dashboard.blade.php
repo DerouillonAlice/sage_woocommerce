@@ -63,8 +63,8 @@ $total_spent = wc_get_customer_total_spent( get_current_user_id() );
 		<div class="bg-white rounded-xl  p-6 border border-gray-200">
 			<div class="flex items-center">
 				<div class="flex-shrink-0">
-					<div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
-						<i class="fas fa-shopping-bag text-secondary-600 text-xl"></i>
+					<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+						<i class="fas fa-shopping-bag text-blue-600 text-xl"></i>
 					</div>
 				</div>
 				<div class="ml-4">
@@ -92,6 +92,7 @@ $total_spent = wc_get_customer_total_spent( get_current_user_id() );
 
 	<!-- Actions rapides -->
 	<div class="bg-white rounded-xl  border border-gray-200 p-6 mb-8">
+
 		
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 			<!-- Voir les commandes -->
@@ -128,68 +129,6 @@ $total_spent = wc_get_customer_total_spent( get_current_user_id() );
 		</div>
 	</div>
 
-	<!-- Commandes récentes -->
-	<?php if ( ! empty( $orders ) ) : ?>
-	<div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
-		<div class="flex items-center justify-between mb-6">
-			<h2 class="text-xl font-semibold text-gray-900 flex items-center">
-				<i class="fas fa-clock w-5 h-5 mr-3 text-secondary-500"></i>
-				<?php esc_html_e( 'Commandes récentes', 'woocommerce' ); ?>
-			</h2>
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'orders' ) ); ?>" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
-				<?php esc_html_e( 'Voir tout', 'woocommerce' ); ?> →
-			</a>
-		</div>
-		
-		<div class="space-y-4">
-			<?php foreach ( array_slice( $orders, 0, 3 ) as $order ) : ?>
-			<div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-				<div class="flex items-center space-x-4">
-					<div class="flex-shrink-0">
-						<div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-							<i class="fas fa-receipt text-gray-600"></i>
-						</div>
-					</div>
-					<div>
-						<h4 class="font-medium text-gray-900">
-							<?php printf( esc_html__( 'Commande #%s', 'woocommerce' ), esc_html( $order->get_order_number() ) ); ?>
-						</h4>
-						<p class="text-sm text-gray-600">
-							<?php echo esc_html( wc_format_datetime( $order->get_date_created(), 'd/m/Y' ) ); ?>
-						</p>
-					</div>
-				</div>
-				<div class="flex items-center space-x-4">
-					<div class="text-right">
-						<p class="font-medium text-gray-900"><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></p>
-						<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-							<?php 
-							switch ( $order->get_status() ) {
-								case 'completed':
-									echo 'bg-primary-100 text-primary-800';
-									break;
-								case 'processing':
-									echo 'bg-secondary-100 text-secondary-800';
-									break;
-								case 'pending':
-									echo 'bg-yellow-100 text-yellow-800';
-									break;
-								default:
-									echo 'bg-gray-100 text-gray-800';
-							}
-							?>">
-							<?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
-						</span>
-					</div>
-					<a href="<?php echo esc_url( $order->get_view_order_url() ); ?>" class="text-primary-600 hover:text-primary-700">
-						<i class="fas fa-chevron-right"></i>
-					</a>
-				</div>
-			</div>
-			<?php endforeach; ?>
-		</div>
-	</div>
-	<?php endif; ?>
 
 	<?php
 	/**

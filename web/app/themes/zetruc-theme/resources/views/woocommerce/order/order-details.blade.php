@@ -54,65 +54,47 @@ if ( $show_downloads ) {
 <section class="woocommerce-order-details">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
-	<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
+	<div class="overflow-x-auto">
+		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full">
+			<thead>
+				<tr class="bg-gray-50">
+					<th class="woocommerce-table__product-name product-name px-4 py-3 text-left text-sm font-semibold text-gray-900">
+						<?php esc_html_e( 'Produit', 'woocommerce' ); ?>
+					</th>
+					<th class="woocommerce-table__product-table product-total px-4 py-3 text-right text-sm font-semibold text-gray-900">
+						<?php esc_html_e( 'Total', 'woocommerce' ); ?>
+					</th>
+				</tr>
+			</thead>
 
-	<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+			<tbody class="divide-y divide-gray-200">
+				<?php
+				do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
-		<thead>
-			<tr>
-				<th class="woocommerce-table__product-name product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-				<th class="woocommerce-table__product-table product-total"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
-			</tr>
-		</thead>
+				foreach ( $order_items as $item_id => $item ) {
+					$product = $item->get_product();
 
-		<tbody>
-			<?php
-			do_action( 'woocommerce_order_details_before_order_table_items', $order );
+					wc_get_template(
+						'order/order-details-item.php',
+						array(
+							'order'              => $order,
+							'item_id'            => $item_id,
+							'item'               => $item,
+							'show_purchase_note' => $show_purchase_note,
+							'purchase_note'      => $product ? $product->get_purchase_note() : '',
+							'product'            => $product,
+						)
+					);
+				}
 
-			foreach ( $order_items as $item_id => $item ) {
-				$product = $item->get_product();
-
-				wc_get_template(
-					'order/order-details-item.php',
-					array(
-						'order'              => $order,
-						'item_id'            => $item_id,
-						'item'               => $item,
-						'show_purchase_note' => $show_purchase_note,
-						'purchase_note'      => $product ? $product->get_purchase_note() : '',
-						'product'            => $product,
-					)
-				);
-			}
-
-			do_action( 'woocommerce_order_details_after_order_table_items', $order );
-			?>
-		</tbody>
+				do_action( 'woocommerce_order_details_after_order_table_items', $order );
+				?>
+			</tbody>
 
 		<?php
 		if ( ! empty( $actions ) ) :
 			?>
-		<tfoot>
-			<tr>
-				<th class="order-actions--heading"><?php esc_html_e( 'Actions', 'woocommerce' ); ?>:</th>
-				<td>
-						<?php
-						$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
-						foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-							if ( empty( $action['aria-label'] ) ) {
-								// Generate the aria-label based on the action name.
-								/* translators: %1$s Action name, %2$s Order number. */
-								$action_aria_label = sprintf( __( '%1$s order number %2$s', 'woocommerce' ), $action['name'], $order->get_order_number() );
-							} else {
-								$action_aria_label = $action['aria-label'];
-							}
-								echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button' . esc_attr( $wp_button_class ) . ' button ' . sanitize_html_class( $key ) . ' order-actions-button " aria-label="' . esc_attr( $action_aria_label ) . '">' . esc_html( $action['name'] ) . '</a>';
-								unset( $action_aria_label );
-						}
-						?>
-					</td>
-				</tr>
-			</tfoot>
+		
 			<?php endif ?>
 		<tfoot>
 			<?php
