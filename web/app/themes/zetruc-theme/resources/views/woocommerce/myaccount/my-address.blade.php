@@ -43,14 +43,21 @@ $col    = 1;
 ?>
 
 
-<div class="max-w-4xl mx-auto mt-10">
-	<div class="mb-6 text-gray-700 text-base">
-		<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'The following addresses will be used on the checkout page by default.', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+	<!-- En-tête de la section -->
+	<div class="mb-8">
+		<h1 class="text-3xl font-bold text-gray-900 mb-3 flex items-center">
+			<i class="fas fa-map-marker-alt text-primary-600 mr-3"></i>
+			Mes adresses
+		</h1>
+		<p class="text-gray-600 text-lg">
+			<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'Gérez vos adresses de facturation et de livraison pour faciliter vos commandes futures.', 'woocommerce' ) ); ?>
+		</p>
 	</div>
 
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+	<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 <?php endif; ?>
 
 <?php foreach ( $get_addresses as $name => $address_title ) : ?>
@@ -60,23 +67,69 @@ $col    = 1;
 		$oldcol  = $oldcol * -1;
 	?>
 
-	<div class="bg-white rounded-2xl shadow-lg p-6 mb-8 flex-1">
-		<header class="flex items-center justify-between mb-4 border-b pb-2">
-			<h2 class="text-lg font-semibold text-gray-800"><?php echo esc_html( $address_title ); ?></h2>
-			<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" class="text-blue-600 hover:text-blue-700 font-medium text-sm transition">
-				<?php
-					printf(
-						/* translators: %s: Address title */
-						$address ? esc_html__( 'Edit %s', 'woocommerce' ) : esc_html__( 'Add %s', 'woocommerce' ),
-						esc_html( $address_title )
-					);
-				?>
-			</a>
-		</header>
-		<address class="text-gray-700 text-base leading-relaxed">
-			<?php
-				echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'woocommerce' );
+	<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+		<!-- En-tête de la carte d'adresse -->
+		<div class="<?php echo $name === 'billing' ? 'bg-secondary-100  border-secondary-200' : 'bg-primary-100  border-primary-200'; ?> px-6 py-4 border-b">
+			<div class="flex items-center justify-between">
+				<div class="flex items-center">
+					<div class="w-10 h-10 <?php echo $name === 'billing' ? 'bg-secondary-100' : 'bg-primary-100'; ?> rounded-lg flex items-center justify-center mr-3">
+						<i class="<?php echo $name === 'billing' ? 'fas fa-credit-card text-secondary-600' : 'fas fa-shipping-fast text-primary-600'; ?> text-lg"></i>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900"><?php echo esc_html( $address_title ); ?></h3>
+				</div>
+				<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" 
+				   class="inline-flex items-center px-4 py-2 <?php echo $name === 'billing' ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-600 hover:bg-primary-700'; ?> text-white text-sm font-medium rounded-lg transition-colors duration-200">
+					<i class="fas fa-edit mr-2"></i>
+					<?php
+						echo $address ? esc_html__( 'Modifier', 'woocommerce' ) : esc_html__( 'Ajouter', 'woocommerce' );
+					?>
+				</a>
+			</div>
+		</div>
 
+		<!-- Contenu de l'adresse -->
+		<div class="p-6">
+			<?php if ( $address ) : ?>
+				<div class="space-y-3">
+					<div class="flex items-start">
+						<i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3 flex-shrink-0"></i>
+						<address class="text-gray-700 leading-relaxed not-italic">
+							<?php echo wp_kses_post( $address ); ?>
+						</address>
+					</div>
+				</div>
+				
+				<!-- Statut de l'adresse -->
+				<div class="mt-4 pt-4 border-t border-gray-100">
+					<div class="flex items-center justify-between">
+						<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+							<i class="fas fa-check-circle mr-1"></i>
+							Adresse configurée
+						</span>
+						<span class="text-xs text-gray-500">
+							<?php echo $name === 'billing' ? 'Utilisée pour la facturation' : 'Utilisée pour la livraison'; ?>
+						</span>
+					</div>
+				</div>
+			<?php else : ?>
+				<!-- État vide -->
+				<div class="text-center py-8">
+					<div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<i class="fas fa-plus text-gray-400 text-xl"></i>
+					</div>
+					<h4 class="text-lg font-medium text-gray-900 mb-2">Aucune adresse configurée</h4>
+					<p class="text-gray-600 mb-4">
+						<?php echo $name === 'billing' ? 'Ajoutez votre adresse de facturation pour faciliter vos achats.' : 'Ajoutez votre adresse de livraison pour recevoir vos commandes.'; ?>
+					</p>
+					<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', $name ) ); ?>" 
+					   class="inline-flex items-center px-4 py-2 <?php echo $name === 'billing' ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-600 hover:bg-primary-700'; ?> text-white text-sm font-medium rounded-lg transition-colors duration-200">
+						<i class="fas fa-plus mr-2"></i>
+						Ajouter une adresse
+					</a>
+				</div>
+			<?php endif; ?>
+
+			<?php
 				/**
 				 * Used to output content after core address fields.
 				 *
@@ -85,7 +138,7 @@ $col    = 1;
 				 */
 				do_action( 'woocommerce_my_account_after_my_address', $name );
 			?>
-		</address>
+		</div>
 	</div>
 
 <?php endforeach; ?>
