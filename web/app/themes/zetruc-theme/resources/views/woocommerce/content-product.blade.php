@@ -69,29 +69,6 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 		</div>
 
 
-		{{-- Rating --}}
-		<div class="mb-2">
-			<?php
-			/**
-			 * Hook: woocommerce_after_shop_loop_item_title.
-			 *
-			 * @hooked woocommerce_template_loop_rating - 5
-			 */
-			if ( wc_review_ratings_enabled() ) {
-				$rating_count = $product->get_rating_count();
-				$review_count = $product->get_review_count();
-				$average      = $product->get_average_rating();
-
-				if ( $rating_count > 0 ) {
-					echo '<div class="flex items-center gap-1 mb-2">';
-					echo wc_get_rating_html( $average, $rating_count );
-					echo '<span class="text-sm text-gray-500">(' . $review_count . ')</span>';
-					echo '</div>';
-				}
-			}
-			?>
-		</div>
-
 		{{-- Prix et bouton --}}
 		<div class="flex items-center justify-between mt-auto">
 			<div class="flex flex-col">
