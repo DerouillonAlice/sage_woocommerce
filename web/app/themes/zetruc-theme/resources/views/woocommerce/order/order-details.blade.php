@@ -57,7 +57,7 @@ if ( $show_downloads ) {
 	<div class="overflow-x-auto">
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full">
 			<thead>
-				<tr class="bg-gray-50">
+				<tr class="bg-gray-100">
 					<th class="woocommerce-table__product-name product-name px-4 py-3 text-left text-sm font-semibold text-gray-900">
 						<?php esc_html_e( 'Produit', 'woocommerce' ); ?>
 					</th>
@@ -116,7 +116,6 @@ if ( $show_downloads ) {
 		</tfoot>
 	</table>
 
-	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 </section>
 
 <?php
@@ -129,5 +128,5 @@ if ( $show_downloads ) {
 do_action( 'woocommerce_after_order_details', $order );
 
 if ( $show_customer_details ) {
-	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+	// wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
 }

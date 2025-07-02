@@ -22,9 +22,9 @@ defined('ABSPATH') || exit();
 do_action('woocommerce_before_account_orders', $has_orders); ?>
 
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-200">
+    <div class="bg-gray-100 px-6 py-4 border-b border-gray-200">
         <h2 class="text-xl font-semibold text-gray-900 flex items-center">
-            <i class="fas fa-shopping-bag mr-3 text-blue-600"></i>
+            <i class="fas fa-shopping-bag mr-3 text-secondary-600"></i>
             Mes commandes
         </h2>
         <p class="text-sm text-gray-600 mt-1">Suivez l'état de vos commandes et consultez votre historique d'achats</p>
@@ -32,10 +32,10 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
 
     <?php if ( $has_orders ) : ?>
     <!-- Filtres rapides -->
-    <div class="bg-gray-50 px-6 py-3 border-b border-gray-200">
+    <div class="px-6 py-3 border-b border-gray-200">
         <div class="flex flex-wrap gap-2" id="order-filters">
             <button
-                class="filter-btn active px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-700 border border-blue-200 hover:bg-blue-200 transition-colors"
+                class="filter-btn active px-3 py-1 text-sm rounded-full bg-secondary-100 text-secondary-700 border border-secondary-200 hover:bg-secondary-200 transition-colors"
                 data-filter="all">
                 Toutes les commandes
             </button>
@@ -75,7 +75,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
 
 
                                 <h3 class="text-lg font-semibold text-gray-900 mb-1">
-                                    <a href="<?php echo esc_url($order->get_view_order_url()); ?>" class="hover:text-blue-600 transition-colors">
+                                    <a href="<?php echo esc_url($order->get_view_order_url()); ?>" class="hover:text-secondary-600 transition-colors">
                                         Commande #<?php echo esc_html($order->get_order_number()); ?>
                                     </a>
                                 </h3>
@@ -106,7 +106,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                                             $status_icon = 'fas fa-pause-circle';
                                             break;
                                         default:
-                                            $status_class = 'bg-blue-100 text-blue-800 border-blue-200';
+                                            $status_class = 'bg-secondary-100 text-secondary-800 border-secondary-200';
                                             $status_icon = 'fas fa-info-circle';
                                     }
                                     ?>
@@ -147,7 +147,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                     <!-- Boutons d'action intégrés -->
                     <div class="flex flex-wrap gap-2">
                         <a href="<?php echo esc_url($order->get_view_order_url()); ?>" 
-                           class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+                           class="inline-flex items-center justify-center px-4 py-2 bg-secondary-600 text-white text-sm font-medium rounded-md hover:bg-secondary-700 transition-colors">
                             <i class="fas fa-eye mr-2"></i>
                             Voir détails
                         </a>
@@ -236,7 +236,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
         <h3 class="text-xl font-semibold text-gray-900 mb-2">Aucune commande trouvée</h3>
         <p class="text-gray-600 mb-6">Vous n'avez pas encore passé de commande.</p>
         <a href="<?php echo esc_url(apply_filters('woocommerce_return_to_shop_redirect', wc_get_page_permalink('shop'))); ?>"
-            class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+            class="inline-flex items-center px-6 py-3 bg-secondary-600 text-white font-medium rounded-lg hover:bg-secondary-700 transition-colors">
             <i class="fas fa-shopping-cart mr-2"></i>
             Commencer mes achats
         </a>
@@ -296,15 +296,15 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                 // Mise à jour des boutons actifs
                 filterButtons.forEach(btn => {
                     btn.classList.remove('active');
-                    btn.classList.remove('bg-blue-100', 'text-blue-700',
-                        'border-blue-200');
+                    btn.classList.remove('bg-secondary-100', 'text-secondary-700',
+                        'border-secondary-200');
                     btn.classList.add('bg-gray-100', 'text-gray-700',
                     'border-gray-200');
                 });
 
                 this.classList.add('active');
                 this.classList.remove('bg-gray-100', 'text-gray-700', 'border-gray-200');
-                this.classList.add('bg-blue-100', 'text-blue-700', 'border-blue-200');
+                this.classList.add('bg-secondary-100', 'text-secondary-700', 'border-secondary-200');
 
                 // Filtrage des commandes
                 orderItems.forEach(item => {
@@ -370,7 +370,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                   </div>
                 </div>
                 <div class="flex items-center">
-                  <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                  <div class="w-3 h-3 bg-secondary-500 rounded-full mr-3"></div>
                   <div class="flex-1">
                     <p class="text-sm font-medium text-gray-900">En préparation</p>
                     <p class="text-xs text-gray-500">Il y a 1 jour</p>

@@ -22,20 +22,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 <section class="woocommerce-order-downloads">
 	<?php if ( isset( $show_title ) && $show_title ) : ?>
 		<h2 class="woocommerce-order-downloads__title text-xl font-semibold text-gray-900 mb-4">
-			<i class="fas fa-download mr-2 text-blue-600"></i>
+			<i class="fas fa-download mr-2 text-secondary-600"></i>
 			<?php esc_html_e( 'Téléchargements', 'woocommerce' ); ?>
 		</h2>
 	<?php endif; ?>
 
 	<div class="space-y-4">
 		<?php foreach ( $downloads as $download ) : ?>
-			<div class="bg-gray-50 rounded-lg p-4 border border-gray-200 hover:bg-gray-100 transition-colors">
+			<div class="bg-gray-100 rounded-lg p-4 border border-gray-200 ">
 				<div class="flex items-center justify-between">
 					<div class="flex-1">
 						<h4 class="font-medium text-gray-900 mb-1">
 							<?php
 							if ( $download['product_url'] ) {
-								echo '<a href="' . esc_url( $download['product_url'] ) . '" class="hover:text-blue-600 transition-colors">' . esc_html( $download['product_name'] ) . '</a>';
+								echo '<a href="' . esc_url( $download['product_url'] ) . '" class="hover:text-secondary-600 transition-colors">' . esc_html( $download['product_name'] ) . '</a>';
 							} else {
 								echo esc_html( $download['product_name'] );
 							}
@@ -73,7 +73,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					
 					<div class="ml-4">
 						<a href="<?php echo esc_url( $download['download_url'] ); ?>" 
-						   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors">
+						   class="inline-flex items-center px-4 py-2 bg-secondary-600 text-white font-medium rounded-md hover:bg-secondary-700 transition-colors">
 							<i class="fas fa-download mr-2"></i>
 							Télécharger
 						</a>

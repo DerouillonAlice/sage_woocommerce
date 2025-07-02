@@ -25,7 +25,7 @@ $notes = $order->get_customer_order_notes();
 <div class="max-w-4xl mx-auto">
   <!-- En-tête de la commande -->
   <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6 overflow-hidden">
-    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-200">
+    <div class="bg-gray-100 px-6 py-4 border-b border-gray-200">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 class="text-2xl font-bold text-gray-900 mb-1">
@@ -64,7 +64,7 @@ $notes = $order->get_customer_order_notes();
               $status_icon = 'fas fa-pause-circle';
               break;
             default:
-              $status_class = 'bg-blue-100 text-blue-800 border-blue-200';
+              $status_class = 'bg-secondary-100 text-secondary-800 border-secondary-200';
               $status_icon = 'fas fa-info-circle';
           }
           ?>
@@ -112,14 +112,14 @@ $notes = $order->get_customer_order_notes();
             </div>
             <div class="flex-1 h-1 bg-green-500 mx-2"></div>
             <div class="flex flex-col items-center text-center">
-              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'processing' ? 'blue-500' : 'green-500'; ?> rounded-full flex items-center justify-center text-white mb-2">
+              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'processing' ? 'secondary-500' : 'green-500'; ?> rounded-full flex items-center justify-center text-white mb-2">
                 <i class="fas fa-<?php echo $order->get_status() === 'processing' ? 'cog fa-spin' : 'check'; ?> text-sm"></i>
               </div>
               <span class="text-xs text-gray-600">En préparation</span>
             </div>
-            <div class="flex-1 h-1 bg-<?php echo $order->get_status() === 'shipped' ? 'blue-500' : 'gray-300'; ?> mx-2"></div>
+            <div class="flex-1 h-1 bg-<?php echo $order->get_status() === 'shipped' ? 'secondary-500' : 'gray-300'; ?> mx-2"></div>
             <div class="flex flex-col items-center text-center">
-              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'shipped' ? 'blue-500' : 'gray-300'; ?> rounded-full flex items-center justify-center text-white mb-2">
+              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'shipped' ? 'secondary-500' : 'gray-300'; ?> rounded-full flex items-center justify-center text-white mb-2">
                 <i class="fas fa-truck text-sm"></i>
               </div>
               <span class="text-xs text-gray-600">Expédiée</span>
@@ -157,7 +157,7 @@ $notes = $order->get_customer_order_notes();
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-              <i class="fas fa-download mr-2 text-blue-600"></i>
+              <i class="fas fa-download mr-2 text-secondary-600"></i>
               Téléchargements
             </h3>
           </div>
@@ -177,14 +177,14 @@ $notes = $order->get_customer_order_notes();
     <div class="space-y-6">
       <!-- Adresses -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+        <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
           <h3 class="text-lg font-semibold text-gray-900">Adresses</h3>
         </div>
         <div class="p-4 space-y-4">
           <!-- Adresse de facturation -->
           <div>
             <h4 class="font-medium text-gray-900 mb-2 flex items-center">
-              <i class="fas fa-file-invoice mr-2 text-blue-600"></i>
+              <i class="fas fa-file-invoice mr-2 text-secondary-600"></i>
               Facturation
             </h4>
             <div class="text-sm text-gray-600">
@@ -207,7 +207,6 @@ $notes = $order->get_customer_order_notes();
           </div>
 
           <!-- Adresse de livraison -->
-          <?php if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() && $order->get_formatted_shipping_address() ) : ?>
             <div class="border-t border-gray-200 pt-4">
               <h4 class="font-medium text-gray-900 mb-2 flex items-center">
                 <i class="fas fa-truck mr-2 text-green-600"></i>
@@ -217,20 +216,19 @@ $notes = $order->get_customer_order_notes();
                 <?php echo wp_kses_post( $order->get_formatted_shipping_address( __( 'N/A', 'woocommerce' ) ) ); ?>
               </div>
             </div>
-          <?php endif; ?>
         </div>
       </div>
 
       <!-- Notes de commande -->
       <?php if ( $notes ) : ?>
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+          <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-900">Notes de commande</h3>
           </div>
           <div class="p-4">
             <div class="space-y-3">
               <?php foreach ( $notes as $note ) : ?>
-                <div class="border-l-4 border-blue-400 pl-4">
+                <div class="border-l-4 border-secondary-400 pl-4">
                   <div class="text-sm text-gray-600 mb-1">
                     <i class="fas fa-clock mr-1"></i>
                     <?php echo esc_html( wc_format_datetime( $note->comment_date_gmt ) ); ?>
@@ -246,6 +244,9 @@ $notes = $order->get_customer_order_notes();
       <!-- Actions rapides -->
       
         <div class="p-4 space-y-3">
+
+        	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
+
           
           <a href="<?php echo esc_url( wc_get_account_endpoint_url( 'orders' ) ); ?>" 
              class="w-full inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-md hover:bg-gray-200 transition-colors">

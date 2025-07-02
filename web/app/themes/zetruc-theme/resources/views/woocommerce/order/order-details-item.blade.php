@@ -23,7 +23,7 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 	return;
 }
 ?>
-<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'woocommerce-table__line-item order_item hover:bg-gray-50', $item, $order ) ); ?>">
+<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'woocommerce-table__line-item order_item ', $item, $order ) ); ?>">
 
 	<td class="woocommerce-table__product-name product-name px-4 py-4">
 		<div class="flex items-start space-x-4">
@@ -42,7 +42,7 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 					$product_permalink = apply_filters( 'woocommerce_order_item_permalink', $is_visible ? $product->get_permalink( $item ) : '', $item, $order );
 
 					echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', 
-						$product_permalink ? sprintf( '<a href="%s" class="text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors">%s</a>', $product_permalink, $item->get_name() ) : 
+						$product_permalink ? sprintf( '<a href="%s" class="text-lg font-medium text-gray-900 hover:text-secondary-600 transition-colors">%s</a>', $product_permalink, $item->get_name() ) : 
 						'<span class="text-lg font-medium text-gray-900">' . $item->get_name() . '</span>', $item, $is_visible ) );
 					?>
 				</div>
@@ -76,10 +76,10 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 
 				<!-- Note d'achat -->
 				<?php if ( $show_purchase_note && $purchase_note ) : ?>
-					<div class="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+					<div class="mt-3 p-3 bg-secondary-50 border border-secondary-200 rounded-lg">
 						<div class="flex items-start">
-							<i class="fas fa-info-circle text-blue-600 mr-2 mt-0.5"></i>
-							<div class="text-sm text-blue-800">
+							<i class="fas fa-info-circle text-secondary-600 mr-2 mt-0.5"></i>
+							<div class="text-sm text-secondary-800">
 								<strong>Note :</strong> <?php echo wp_kses_post( wpautop( do_shortcode( $purchase_note ) ) ); ?>
 							</div>
 						</div>
