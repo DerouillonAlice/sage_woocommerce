@@ -185,9 +185,9 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 					<p class="woocommerce-form-row form-row">
 						<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
-						<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>">
+						<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>">
 							<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-								<svg class="h-5 w-5 text-green-300 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<svg class="h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
 								</svg>
 							</span>
@@ -290,7 +290,7 @@ function showTab(tabName) {
 	
 	// Réinitialiser tous les onglets
 	document.querySelectorAll('#login-tab, #register-tab').forEach(tab => {
-		tab.classList.remove('border-primary-600', 'text-primary-600', 'bg-primary-50', 'border-green-600', 'text-green-600', 'bg-green-50');
+		tab.classList.remove('border-primary-600', 'text-primary-600', 'bg-primary-50', 'border-primary-600', 'text-primary-600', 'bg-primary-50');
 		tab.classList.add('border-gray-200', 'text-gray-500');
 	});
 	
@@ -304,7 +304,7 @@ function showTab(tabName) {
 		document.getElementById('register-content').classList.remove('hidden');
 		const registerTab = document.getElementById('register-tab');
 		registerTab.classList.remove('border-gray-200', 'text-gray-500');
-		registerTab.classList.add('border-green-600', 'text-green-600', 'bg-green-50');
+		registerTab.classList.add('border-primary-600', 'text-primary-600', 'bg-primary-50');
 	}
 }
 
