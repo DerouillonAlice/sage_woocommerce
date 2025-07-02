@@ -24,7 +24,7 @@ defined('ABSPATH') || exit;
 		<h3 id="ship-to-different-address" class="text-lg font-semibold text-gray-800 mb-4">
 			<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox flex items-center cursor-pointer">
 				<input id="ship-to-different-address-checkbox" 
-					   class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" 
+					   class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox mr-3 h-4 w-4 text-secondary-600 focus:ring-secondary-500 border-gray-300 rounded" 
 					   {{ checked(apply_filters('woocommerce_ship_to_different_address_checked', 'shipping' === get_option('woocommerce_ship_to_destination') ? 1 : 0), 1, false) }} 
 					   type="checkbox" 
 					   name="ship_to_different_address" 
@@ -51,7 +51,7 @@ defined('ABSPATH') || exit;
 					// Style pour les inputs
 					$field['input_class'] = array_merge(
 						isset($field['input_class']) ? $field['input_class'] : [],
-						['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500', 'focus:border-blue-500', 'resize-none']
+						['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500', 'resize-none']
 					);
 					
 					// Style pour les labels
@@ -93,7 +93,7 @@ defined('ABSPATH') || exit;
 				
 				$field['input_class'] = array_merge(
 					isset($field['input_class']) ? $field['input_class'] : [],
-					['w-full', 'px-3', 'py-2', 'resize-none'  ,'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500', 'focus:border-blue-500', 'resize-y']
+					['w-full', 'px-3', 'py-2', 'resize-none'  ,'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500', 'resize-y']
 				);
 				
 				$field['label_class'] = array_merge(

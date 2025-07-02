@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      * @hooked woocommerce_product_archive_description - 10
      */
     ?>
-    <div class="text-center text-blue-100 max-w-2xl mx-auto">
+    <div class="text-center text-secondary-100 max-w-2xl mx-auto">
       <?php do_action( 'woocommerce_archive_description' ); ?>
     </div>
    

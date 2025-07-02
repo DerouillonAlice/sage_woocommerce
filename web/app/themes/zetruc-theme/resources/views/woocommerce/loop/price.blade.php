@@ -23,7 +23,7 @@ global $product;
 ?>
 
 <?php if ( $price_html = $product->get_price_html() ) : ?>
-  <span class="price text-lg font-bold text-blue-700">
+  <span class="price text-lg font-bold text-secondary-700">
     <?php echo $price_html; ?>
   </span>
 <?php endif; ?>

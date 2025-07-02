@@ -52,7 +52,7 @@ if (!isset($orderby)) {
   <select
     name="orderby"
     id="woocommerce-orderby-<?php echo esc_attr( $id_suffix ); ?>"
-    class="orderby min-w-0 flex-auto rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+    class="orderby min-w-0 flex-auto rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500 transition-colors"
     aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>"
     onchange="this.form.submit()"
   >

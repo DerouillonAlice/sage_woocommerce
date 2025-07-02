@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 		{{-- Suggestions d'actions --}}
 		<div class="space-y-3">
 			<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" 
-			   class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+			   class="inline-flex items-center justify-center px-6 py-3 bg-secondary-600 text-white font-medium rounded-lg hover:bg-secondary-700 transition-colors">
 				<i class="fas fa-store w-5 h-5 mr-2"></i>
 				Voir tous les produits
 			</a>
@@ -75,9 +75,9 @@ defined( 'ABSPATH' ) || exit;
 				<div class="flex flex-wrap justify-center gap-2">
 					<?php foreach ( $popular_categories as $category ) : ?>
 						<a href="<?php echo esc_url( get_term_link( $category ) ); ?>" 
-						   class="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-full hover:bg-blue-100 transition-colors">
+						   class="inline-flex items-center px-3 py-1 text-xs font-medium text-secondary-600 bg-secondary-50 rounded-full hover:bg-secondary-100 transition-colors">
 							<?php echo esc_html( $category->name ); ?>
-							<span class="ml-1 text-blue-400">(<?php echo $category->count; ?>)</span>
+							<span class="ml-1 text-secondary-400">(<?php echo $category->count; ?>)</span>
 						</a>
 					<?php endforeach; ?>
 				</div>

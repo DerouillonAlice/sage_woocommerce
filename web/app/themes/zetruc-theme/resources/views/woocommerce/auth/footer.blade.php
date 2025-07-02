@@ -94,13 +94,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<h5 class="text-sm font-medium mb-3">Moyens de paiement</h5>
 							<div class="flex space-x-2">
 								<div class="w-8 h-6 bg-white rounded flex items-center justify-center">
-									<span class="text-xs font-bold text-blue-600">VISA</span>
+									<span class="text-xs font-bold text-secondary-600">VISA</span>
 								</div>
 								<div class="w-8 h-6 bg-white rounded flex items-center justify-center">
 									<span class="text-xs font-bold text-red-600">MC</span>
 								</div>
 								<div class="w-8 h-6 bg-white rounded flex items-center justify-center">
-									<span class="text-xs font-bold text-blue-800">PP</span>
+									<span class="text-xs font-bold text-secondary-800">PP</span>
 								</div>
 							</div>
 						</div>
@@ -141,7 +141,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								Paiement sécurisé
 							</span>
 							<span class="flex items-center">
-								<svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+								<svg class="w-4 h-4 mr-1 text-secondary-500" fill="currentColor" viewBox="0 0 20 20">
 									<path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
 								</svg>
 								Livraison rapide

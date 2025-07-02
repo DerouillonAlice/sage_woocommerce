@@ -46,7 +46,7 @@ defined('ABSPATH') || exit;
 				// Style pour les inputs
 				$field['input_class'] = array_merge(
 					isset($field['input_class']) ? $field['input_class'] : [],
-					['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500', 'focus:border-blue-500']
+					['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500']
 				);
 				
 				// Style pour les labels
@@ -76,15 +76,15 @@ defined('ABSPATH') || exit;
 @if(!is_user_logged_in() && $checkout->is_registration_enabled())
 	<div class="woocommerce-account-fields bg-white rounded-lg shadow-sm p-6 mt-6">
 		@if(!$checkout->is_registration_required())
-			<div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+			<div class="bg-secondary-50 border border-secondary-200 rounded-lg p-4 mb-4">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox flex items-center cursor-pointer">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" 
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox mr-3 h-4 w-4 text-secondary-600 focus:ring-secondary-500 border-gray-300 rounded" 
 						   id="createaccount" 
 						   {{ checked((true === $checkout->get_value('createaccount') || (true === apply_filters('woocommerce_create_account_default_checked', false))), true, false) }} 
 						   type="checkbox" 
 						   name="createaccount" 
 						   value="1" />
-					<span class="text-blue-800 font-medium">{{ esc_html__('Créer un compte ?', 'woocommerce') }}</span>
+					<span class="text-secondary-800 font-medium">{{ esc_html__('Créer un compte ?', 'woocommerce') }}</span>
 				</label>
 			</div>
 		@endif
@@ -105,7 +105,7 @@ defined('ABSPATH') || exit;
 					
 					$field['input_class'] = array_merge(
 						isset($field['input_class']) ? $field['input_class'] : [],
-						['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500', 'focus:border-blue-500']
+						['w-full', 'px-3', 'py-2', 'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500']
 					);
 					
 					$field['label_class'] = array_merge(

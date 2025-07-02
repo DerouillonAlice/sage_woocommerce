@@ -144,7 +144,7 @@ Template Name: Cart
           <!-- Formulaire de coupon -->
           @if (wc_coupons_enabled())
             <div class="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <button type="button" class="w-full text-left flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 hover:bg-blue-100 transition-colors" id="toggle-coupon-form">
+              <button type="button" class="w-full text-left flex items-center justify-between p-3 bg-secondary-50 border border-secondary-200 rounded-lg text-secondary-700 hover:bg-secondary-100 transition-colors" id="toggle-coupon-form">
                 <span class="flex items-center font-medium">
                   <i class="fas fa-ticket-alt mr-2"></i>
                   Avez-vous un code promo ?

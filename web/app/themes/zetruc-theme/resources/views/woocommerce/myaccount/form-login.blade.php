@@ -151,7 +151,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 							</label>
 							<div class="relative">
 								<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-									<i class="fas fa-lock h-5 w-5 text-blue-400"></i>
+									<i class="fas fa-lock h-5 w-5 text-secondary-400"></i>
 								</div>
 								<input type="password" class="woocommerce-Input woocommerce-Input--text input-text block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" name="password" id="reg_password" autocomplete="new-password" placeholder="Créer un mot de passe" />
 							</div>
@@ -159,13 +159,13 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 					<?php else : ?>
 
-						<div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+						<div class="bg-secondary-50 border border-secondary-200 rounded-lg p-4">
 							<div class="flex">
 								<div class="flex-shrink-0">
-									<i class="fas fa-info-circle h-5 w-5 text-blue-400"></i>
+									<i class="fas fa-info-circle h-5 w-5 text-secondary-400"></i>
 								</div>
 								<div class="ml-3">
-									<p class="text-sm text-blue-700"><?php esc_html_e( 'A link to set a new password will be sent to your email address.', 'woocommerce' ); ?></p>
+									<p class="text-sm text-secondary-700"><?php esc_html_e( 'A link to set a new password will be sent to your email address.', 'woocommerce' ); ?></p>
 								</div>
 							</div>
 						</div>
