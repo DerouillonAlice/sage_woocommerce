@@ -26,12 +26,16 @@ if ( ! $notices ) {
 ?>
 
 <?php foreach ( $notices as $notice ) : ?>
-	<div class="wc-block-components-notice-banner is-success"<?php echo wc_get_notice_data_attr( $notice ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> role="alert">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-			<path d="M16.7 7.1l-6.3 8.5-3.3-2.5-.9 1.2 4.5 3.4L17.9 8z"></path>
-		</svg>
-		<div class="wc-block-components-notice-banner__content">
-			<?php echo wc_kses_notice( $notice['notice'] ); ?>
+	<div class="mb-4 p-4 rounded-lg border-l-4 shadow-sm"<?php echo wc_get_notice_data_attr( $notice ); ?> role="alert" style="border-left-color: var(--color-success); background-color: color-mix(in srgb, var(--color-success) 10%, white);">
+		<div class="flex items-start">
+			<div class="flex-shrink-0">
+				<i class="fas fa-check-circle text-lg mt-0.5" style="color: var(--color-success);"></i>
+			</div>
+			<div class="ml-3 flex-1">
+				<div class="font-medium" style="color: color-mix(in srgb, var(--color-success) 80%, black);">
+					<?php echo wc_kses_notice( $notice['notice'] ); ?>
+				</div>
+			</div>
 		</div>
 	</div>
 <?php endforeach; ?>

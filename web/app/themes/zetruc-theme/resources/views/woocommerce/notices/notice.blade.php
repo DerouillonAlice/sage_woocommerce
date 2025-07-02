@@ -26,7 +26,12 @@ if ( ! $notices ) {
 ?>
 
 <?php foreach ( $notices as $notice ) : ?>
-	<div class="woocommerce-info"<?php echo wc_get_notice_data_attr( $notice ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-		<?php echo wc_kses_notice( $notice['notice'] ); ?>
+	<div class="mb-4 p-4 rounded-lg border-l-4 shadow-sm flex items-start" style="border-left-color: var(--color-warning); background-color: color-mix(in srgb, var(--color-warning) 10%, white);"<?php echo wc_get_notice_data_attr( $notice ); ?>>
+		<div class="flex-shrink-0">
+			<i class="fas fa-info-circle text-lg mt-0.5" style="color: var(--color-warning);"></i>
+		</div>
+		<div class="ml-3 flex-1 font-medium" style="color: color-mix(in srgb, var(--color-warning) 80%, black);">
+			<?php echo wc_kses_notice( $notice['notice'] ); ?>
+		</div>
 	</div>
 <?php endforeach; ?>
