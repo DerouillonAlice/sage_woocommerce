@@ -21,30 +21,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-	<section class="related products">
+	<section class="related products bg-white shadow rounded-lg p-6 mt-8">
 
 		<?php
 		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
 
 		if ( $heading ) :
 			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
+			<h2 class="text-2xl font-bold mb-6"><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
-		<?php woocommerce_product_loop_start(); ?>
-
+		
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 			<?php foreach ( $related_products as $related_product ) : ?>
-
+				<div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all hover:shadow-md">
 					<?php
 					$post_object = get_post( $related_product->get_id() );
-
 					setup_postdata( $GLOBALS['post'] = $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-					wc_get_template_part( 'content', 'product' );
 					?>
-
+					
+					<a href="<?php echo esc_url( get_permalink() ); ?>" class="block">
+						<div class="aspect-w-1 aspect-h-1">
+							<?php echo $related_product->get_image('thumbnail', ['class' => 'object-cover w-full h-full']); ?>
+						</div>
+						<div class="p-4">
+							<h3 class="text-sm font-medium"><?php echo get_the_title(); ?></h3>
+							<div class="mt-2 text-sm text-gray-700">
+								<?php echo $related_product->get_price_html(); ?>
+							</div>
+						</div>
+					</a>
+				</div>
 			<?php endforeach; ?>
-
-		<?php woocommerce_product_loop_end(); ?>
+		</div>
 
 	</section>
 	<?php
