@@ -57,3 +57,7 @@
 	border-color: var(--primary);
 	outline: none !important;
 }
+
+a:where(:not(.wp-element-button)) {
+    text-decoration: none !important;
+}
