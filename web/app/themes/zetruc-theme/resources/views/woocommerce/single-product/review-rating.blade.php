@@ -25,13 +25,15 @@ $rating = intval(get_comment_meta($comment->comment_ID, 'rating', true));
 
 @if($rating && wc_review_ratings_enabled())
     <div class="flex items-center mb-2">
-        <div class="flex text-yellow-400">
-            @php
-            $rating_html = wc_get_rating_html($rating);
-            $rating_html = str_replace('star-rating', 'star-rating flex', $rating_html);
-            echo $rating_html;
-            @endphp
+        <div class="flex items-center text-yellow-400">
+            @for($i = 1; $i <= 5; $i++)
+                @if($i <= $rating)
+                    <i class="fas fa-star text-sm"></i>
+                @else
+                    <i class="far fa-star text-sm text-gray-300"></i>
+                @endif
+            @endfor
         </div>
-        <!-- <span class="ml-2 text-xs font-medium text-gray-600">{{ $rating }}.0/5</span> -->
+        <span class="ml-2 text-xs font-medium text-gray-600">{{ $rating }}/5</span>
     </div>
 @endif
