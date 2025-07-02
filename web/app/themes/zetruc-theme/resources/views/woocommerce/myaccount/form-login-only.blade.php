@@ -26,9 +26,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 			<div class="mb-6">
 				<h2 class="text-2xl font-bold text-gray-900 flex items-center">
-					<svg class="w-6 h-6 mr-2 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-					</svg>
+					<i class="fas fa-sign-in-alt w-6 h-6 mr-2 text-primary-600"></i>
 					<?php esc_html_e( 'Login', 'woocommerce' ); ?>
 				</h2>
 				<p class="mt-2 text-sm text-gray-600">Accédez à votre espace personnel</p>
@@ -45,9 +43,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					</label>
 					<div class="relative">
 						<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-							<svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-							</svg>
+							<i class="fas fa-user h-5 w-5 text-gray-400"></i>
 						</div>
 						<input type="text" class="woocommerce-Input woocommerce-Input--text input-text block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="votre@email.com" /><?php // @codingStandardsIgnoreLine ?>
 					</div>
@@ -79,9 +75,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 					<button type="submit" class="woocommerce-button button woocommerce-form-login__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>">
 						<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-							<svg class="h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-							</svg>
+							<i class="fas fa-sign-in-alt h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors"></i>
 						</span>
 						<?php esc_html_e( 'Log in', 'woocommerce' ); ?>
 					</button>

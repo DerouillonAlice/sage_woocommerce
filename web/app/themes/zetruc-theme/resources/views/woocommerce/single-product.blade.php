@@ -50,7 +50,7 @@ the readme will list any important changes.
             <div class="flex items-center gap-4 mb-4">
               @if (comments_open())
                 <a href="#reviews" class="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H7a2 2 0 01-2-2V10a2 2 0 012-2h2m5-4h-2a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V6a2 2 0 00-2-2z"/></svg>
+                  <i class="fas fa-comments w-4 h-4 text-blue-400"></i>
                   {{ $product->get_review_count() }} avis
                 </a>
                 <span class="text-yellow-400 text-base">

@@ -14,7 +14,7 @@ Template Name: Home
         <div class="relative z-10 flex flex-col items-center justify-center text-center p-8 md:p-12">
           <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">{{ $home_banner['title'] ?? '' }}</h1>
           <p class="text-lg text-gray-300 mb-6">{{ $home_banner['text'] ?? '' }}</p>
-          <a href="{{ $home_banner['button_url'] }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 font-semibold transition">
+          <a href="{{ $home_banner['button_url'] }}" class="btn-primary">
             {{ $home_banner['button_text'] }}
           </a>
         </div>

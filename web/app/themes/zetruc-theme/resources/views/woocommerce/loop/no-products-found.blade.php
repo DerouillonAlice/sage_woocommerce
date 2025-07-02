@@ -22,9 +22,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="max-w-md mx-auto">
 		{{-- Icône illustrative --}}
 		<div class="mb-6">
-			<svg class="w-20 h-20 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M9 21V9l8-4"/>
-			</svg>
+			<i class="fas fa-box-open text-8xl text-gray-300"></i>
 		</div>
 
 		{{-- Message principal --}}
@@ -41,27 +39,20 @@ defined( 'ABSPATH' ) || exit;
 		<div class="space-y-3">
 			<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" 
 			   class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-				<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 9l4-4 4 4"/>
-				</svg>
+				<i class="fas fa-store w-5 h-5 mr-2"></i>
 				Voir tous les produits
 			</a>
 			
 			<div class="flex flex-col sm:flex-row gap-2 justify-center">
 				<button onclick="history.back()" 
 						class="inline-flex items-center justify-center px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-					<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-					</svg>
+					<i class="fas fa-arrow-left w-4 h-4 mr-2"></i>
 					Retour
 				</button>
 				
 				<button onclick="clearFilters()" 
 						class="inline-flex items-center justify-center px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-					<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-					</svg>
+					<i class="fas fa-redo w-4 h-4 mr-2"></i>
 					Effacer les filtres
 				</button>
 			</div>
