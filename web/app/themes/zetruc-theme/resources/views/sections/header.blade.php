@@ -9,46 +9,43 @@
       </div>
 
       <div class="flex-1 flex justify-center">
-        <form role="search" method="get" class="w-full max-w-md" action="{{ home_url('/') }}">
-          <div class="relative">
-            <input type="search" name="s" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Rechercher un produit..." value="{{ get_search_query() }}" />
+        <form role="search" method="get" class="w-full max-w-2xl" action="{{ home_url('/') }}">
+          <div class="flex border border-gray-300 rounded-lg overflow-hidden bg-white">
+            <select name="product_cat" class="flex-shrink-0 bg-gray-50 border-0 border-r border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-white">
+              <option value="">Toutes catégories</option>
+              @foreach(get_terms('product_cat', ['hide_empty' => true]) as $category)
+                <option value="{{ $category->slug }}">{{ $category->name }}</option>
+              @endforeach
+            </select>
+            <input type="search" name="s" class="flex-1 px-4 py-2 border-0 focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="Rechercher un produit..." value="{{ get_search_query() }}" />
             <input type="hidden" name="post_type" value="product" />
-            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-primary-600 hover:text-primary-700">
-              <i class="fas fa-search"></i>
+            <button type="submit" class="flex-shrink-0 px-4 py-2 bg-primary-600 text-white hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
             </button>
           </div>
         </form>
       </div>
 
       <div class="flex items-center flex-1 justify-end space-x-4">
-        <a href="{{ wc_get_cart_url() }}" class="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-md hover:bg-primary-50 relative">
-          <i class="fas fa-shopping-cart text-xl"></i>
+        <!-- Panier -->
+        <a href="{{ wc_get_cart_url() }}" class="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
+          <i class="fas fa-shopping-cart text-2xl"></i>
           @if(WC()->cart->get_cart_contents_count() > 0)
-            <span class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+            <span class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
               {{ WC()->cart->get_cart_contents_count() }}
             </span>
           @endif
-          <span class="hidden lg:inline-block font-medium">
-            Panier
-            @if(WC()->cart->get_cart_contents_count() > 0)
-              <span class="text-primary-600">({!! strip_tags(WC()->cart->get_total()) !!})</span>
-            @endif
-          </span>
         </a>
-        @if(is_user_logged_in())
-          <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-md hover:bg-primary-50">
-            <i class="fas fa-user-circle text-xl"></i>
-            <span class="hidden lg:inline-block font-medium">Mon compte</span>
+        
+        <!-- Profil / Connexion -->
+
+          <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="p-2 text-gray-600 hover:text-primary-600 transition-colors">
+            <i class="fas fa-user text-2xl"></i>
           </a>
-        @else
-          <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors duration-200 p-2 rounded-md hover:bg-primary-50">
-            <i class="fas fa-sign-in-alt text-xl"></i>
-            <span class="hidden lg:inline-block font-medium">Connexion / Inscription</span>
-          </a>
-        @endif
       </div>
     </div>
-  </div>
   </div>
 </header>
 

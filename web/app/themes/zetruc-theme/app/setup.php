@@ -180,6 +180,16 @@ add_action('wp_enqueue_scripts', function () {
         [],
         '6.5.1'
     );
+    
+    // Enqueue custom WooCommerce styles
+    if (function_exists('is_woocommerce') || is_page('my-account') || is_page('checkout') || is_page('cart')) {
+        wp_enqueue_style(
+            'custom-woocommerce',
+            get_template_directory_uri() . '/resources/css/woocommerce.css',
+            [],
+            '1.0.0'
+        );
+    }
 });
 
 /**
