@@ -52,7 +52,7 @@ global $product;
 	?>
 		<div class="flex flex-wrap items-center text-sm text-gray-600">
 			<span class="font-medium mr-2"><?php echo _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ); ?></span>
-			<?php echo wp_kses_post( str_replace(', ', '</span><span class="bg-blue-100 text-blue-800 rounded px-2 py-1 text-xs mr-1 mb-1">', str_replace('>, <a', '></span><span class="bg-blue-100 text-blue-800 rounded px-2 py-1 text-xs mr-1 mb-1"><a', $tags) ) ); ?>
+			<?php echo wp_kses_post( str_replace(', ', '</span><span class="bg-secondary-100 text-secondary-800 rounded px-2 py-1 text-xs mr-1 mb-1">', str_replace('>, <a', '></span><span class="bg-secondary-100 text-secondary-800 rounded px-2 py-1 text-xs mr-1 mb-1"><a', $tags) ) ); ?>
 		</div>
 	<?php endif; ?>
 

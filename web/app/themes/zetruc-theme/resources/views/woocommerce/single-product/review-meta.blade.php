@@ -1,5 +1,4 @@
-<?php
-/**
+{{--
  * The template to display the reviewers meta data (name, verified owner, review date)
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/single-product/review-meta.php.
@@ -13,33 +12,36 @@
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.4.0
- */
+--}}
 
-defined( 'ABSPATH' ) || exit;
+@php
+defined('ABSPATH') || exit;
 
 global $comment;
-$verified = wc_review_is_from_verified_owner( $comment->comment_ID );
+$verified = wc_review_is_from_verified_owner($comment->comment_ID);
+@endphp
 
-if ( '0' === $comment->comment_approved ) { ?>
-
-	<p class="meta">
-		<em class="woocommerce-review__awaiting-approval">
-			<?php esc_html_e( 'Your review is awaiting approval', 'woocommerce' ); ?>
-		</em>
-	</p>
-
-<?php } else { ?>
-
-	<p class="meta">
-		<strong class="woocommerce-review__author"><?php comment_author(); ?> </strong>
-		<?php
-		if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) {
-			echo '<em class="woocommerce-review__verified verified">(' . esc_attr__( 'verified owner', 'woocommerce' ) . ')</em> ';
-		}
-
-		?>
-		<span class="woocommerce-review__dash">&ndash;</span> <time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>"><?php echo esc_html( get_comment_date( wc_date_format() ) ); ?></time>
-	</p>
-
-	<?php
-}
+@if('0' === $comment->comment_approved)
+    <div class="meta bg-yellow-50 border-l-4 border-yellow-400 p-3 my-2">
+        <em class="woocommerce-review__awaiting-approval text-yellow-700">
+            {{ esc_html__('Votre avis est en attente d\'approbation', 'woocommerce') }}
+        </em>
+    </div>
+@else
+    <div class="meta flex flex-wrap items-center gap-2 mb-1">
+        <span class="woocommerce-review__author font-medium text-gray-800">{{ get_comment_author() }}</span>
+        
+        @if('yes' === get_option('woocommerce_review_rating_verification_label') && $verified)
+            <span class="woocommerce-review__verified verified inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                <i class="fas fa-check-circle mr-1"></i>
+                {{ esc_attr__('achat vérifié', 'woocommerce') }}
+            </span>
+        @endif
+        
+        <span class="woocommerce-review__dash text-gray-400 mx-1">&ndash;</span>
+        
+        <time class="woocommerce-review__published-date text-sm text-gray-500" datetime="{{ esc_attr(get_comment_date('c')) }}">
+            {{ esc_html(get_comment_date(wc_date_format())) }}
+        </time>
+    </div>
+@endif

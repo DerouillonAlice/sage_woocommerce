@@ -127,7 +127,6 @@ defined( 'ABSPATH' ) || exit;
             </div>
         <?php endif; ?>
 
-        <!-- Formulaire de code promo -->
-        <?php wc_get_template( 'checkout/form-coupon.blade.php' ); ?>
+
     </div>
 </div>

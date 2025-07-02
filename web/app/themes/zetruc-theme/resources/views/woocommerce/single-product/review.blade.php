@@ -1,5 +1,4 @@
-<?php
-/**
+{{--
  * Review Comments Template
  *
  * Closing li is left out on purpose!.
@@ -15,53 +14,49 @@
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 2.6.0
- */
+--}}
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+@php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
-?>
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+@endphp
 
-	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
+<li {{ comment_class('mb-6') }} id="li-comment-{{ comment_ID() }}">
+    <div id="comment-{{ comment_ID() }}" class="comment_container bg-white p-5 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="comment-text w-full">
+            {{-- Suppression complète de l'avatar des avis --}}
+            {{-- Nous n'exécutons pas le hook woocommerce_review_before qui afficherait normalement l'avatar --}}
+            
+            @php
+            /**
+             * The woocommerce_review_before_comment_meta hook.
+             *
+             * @hooked woocommerce_review_display_rating - 10
+             */
+            do_action('woocommerce_review_before_comment_meta', $comment);
 
-		<?php
-		/**
-		 * The woocommerce_review_before hook
-		 *
-		 * @hooked woocommerce_review_display_gravatar - 10
-		 */
-		do_action( 'woocommerce_review_before', $comment );
-		?>
-
-		<div class="comment-text">
-
-			<?php
-			/**
-			 * The woocommerce_review_before_comment_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_rating - 10
-			 */
-			do_action( 'woocommerce_review_before_comment_meta', $comment );
-
-			/**
-			 * The woocommerce_review_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_meta - 10
-			 */
-			do_action( 'woocommerce_review_meta', $comment );
-
-			do_action( 'woocommerce_review_before_comment_text', $comment );
-
-			/**
-			 * The woocommerce_review_comment_text hook
-			 *
-			 * @hooked woocommerce_review_display_comment_text - 10
-			 */
-			do_action( 'woocommerce_review_comment_text', $comment );
-
-			do_action( 'woocommerce_review_after_comment_text', $comment );
-			?>
-
-		</div>
-	</div>
+            /**
+             * The woocommerce_review_meta hook.
+             *
+             * @hooked woocommerce_review_display_meta - 10
+             */
+            do_action('woocommerce_review_meta', $comment);
+            
+            do_action('woocommerce_review_before_comment_text', $comment);
+            @endphp
+            
+            <div class="prose prose-sm max-w-none text-gray-700 mt-2 py-2">
+                @php
+                /**
+                 * The woocommerce_review_comment_text hook
+                 *
+                 * @hooked woocommerce_review_display_comment_text - 10
+                 */
+                do_action('woocommerce_review_comment_text', $comment);
+                
+                do_action('woocommerce_review_after_comment_text', $comment);
+                @endphp
+            </div>
+        </div>
+    </div>

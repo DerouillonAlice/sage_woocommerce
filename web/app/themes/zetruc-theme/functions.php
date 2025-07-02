@@ -49,7 +49,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'post-types', 'page-fields', 'admin-cleanup'])
+collect(['setup', 'filters', 'post-types', 'page-fields', 'admin-cleanup', 'setup/woocommerce'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(

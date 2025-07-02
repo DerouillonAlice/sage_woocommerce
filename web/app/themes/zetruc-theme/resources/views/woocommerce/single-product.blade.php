@@ -26,7 +26,6 @@ the readme will list any important changes.
     @while(have_posts())
       @php
         the_post();
-        // Inclure le template principal de contenu du produit
         wc_get_template_part('content', 'single-product');
       @endphp
     @endwhile

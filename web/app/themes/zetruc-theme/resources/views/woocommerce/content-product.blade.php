@@ -59,7 +59,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 			 * @hooked woocommerce_template_loop_product_title - 10
 			 */
 			?>
-			<h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 data-[view=list]:text-xl">
+			<h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-2 data-[view=list]:text-xl">
 				<a href="<?php echo esc_url( get_permalink() ); ?>" class="hover:no-underline">
 					<?php echo get_the_title(); ?>
 				</a>

@@ -36,7 +36,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 				<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 					<li role="presentation" class="mr-2 <?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>">
 						<a href="#tab-<?php echo esc_attr( $key ); ?>" 
-                           class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-blue-600 hover:border-blue-300" 
+                           class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-secondary-600 hover:border-secondary-300" 
                            role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
 							<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
 						</a>

@@ -81,11 +81,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					<?php endif; ?>
 
 					<!-- Notes de commande -->
-					<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mt-6">
+					<!-- <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mt-6">
 						<h3 class="text-lg font-semibold text-gray-900 mb-4">Notes de commande (optionnel)</h3>
 						<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 						<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-					</div>
+					</div> -->
 				</div>
 
 				<!-- Section droite : Récapitulatif de commande -->

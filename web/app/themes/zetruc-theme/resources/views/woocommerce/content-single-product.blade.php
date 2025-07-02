@@ -32,7 +32,7 @@ if ( post_password_required() ) {
 }
 @endphp
 
-<div id="product-{{ get_the_ID() }}" @php wc_product_class('bg-white shadow rounded-lg p-8 flex flex-col lg:flex-row gap-8', $product); @endphp>
+<div id="product-{{ get_the_ID() }}" @php wc_product_class('p-8 flex flex-col lg:flex-row gap-8', $product); @endphp>
   <div class="lg:w-1/2">
     @php
     /**

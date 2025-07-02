@@ -74,7 +74,7 @@ $wrapper_classes   = apply_filters(
 			<div class="flex flex-wrap gap-2 justify-center">
 				{{-- Main thumbnail --}}
 				@if($post_thumbnail_id)
-					<div class="thumbnail-item cursor-pointer w-20 h-20 border-2 border-blue-500 rounded-md overflow-hidden" data-index="0">
+					<div class="thumbnail-item cursor-pointer w-20 h-20 border-2 border-primary-500 rounded-md overflow-hidden" data-index="0">
 						{!! wp_get_attachment_image($post_thumbnail_id, 'thumbnail', false, ['class' => 'h-full w-full object-cover']) !!}
 					</div>
 				@endif
@@ -85,7 +85,7 @@ $wrapper_classes   = apply_filters(
 						$full_img_src = wp_get_attachment_image_src($gallery_image_id, 'full');
 						$gallery_index = $i + 1; // +1 because the main image is index 0
 					@endphp
-					<div class="thumbnail-item cursor-pointer w-20 h-20 border-2 border-transparent hover:border-blue-300 rounded-md overflow-hidden"
+					<div class="thumbnail-item cursor-pointer w-20 h-20 border-2 border-transparent hover:border-primary-300 rounded-md overflow-hidden"
 						 data-index="{{ $gallery_index }}">
 						{!! wp_get_attachment_image($gallery_image_id, 'thumbnail', false, ['class' => 'h-full w-full object-cover']) !!}
 					</div>
@@ -122,13 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnail.addEventListener('click', function() {
                 // Remove active border from all thumbnails
                 thumbnails.forEach(t => {
-                    t.classList.remove('border-blue-500');
+                    t.classList.remove('border-primary-500');
                     t.classList.add('border-transparent');
                 });
                 
                 // Add active border to clicked thumbnail
                 this.classList.remove('border-transparent');
-                this.classList.add('border-blue-500');
+                this.classList.add('border-primary-500');
                 
                 // Find the index and corresponding gallery item
                 const index = parseInt(this.getAttribute('data-index'));
