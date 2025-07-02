@@ -28,11 +28,10 @@ $rating = intval(get_comment_meta($comment->comment_ID, 'rating', true));
         <div class="flex text-yellow-400">
             @php
             $rating_html = wc_get_rating_html($rating);
-            // Remplacer les classes de base par des classes Tailwind
             $rating_html = str_replace('star-rating', 'star-rating flex', $rating_html);
             echo $rating_html;
             @endphp
         </div>
-        <span class="ml-2 text-xs font-medium text-gray-600">{{ $rating }}.0/5</span>
+        <!-- <span class="ml-2 text-xs font-medium text-gray-600">{{ $rating }}.0/5</span> -->
     </div>
 @endif

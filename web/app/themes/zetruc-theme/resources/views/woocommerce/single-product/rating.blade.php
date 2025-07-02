@@ -40,7 +40,7 @@ $average      = $product->get_average_rating();
 				echo $rating_html;
 				@endphp
 			</div>
-			<span class="ml-2 text-sm font-medium text-gray-700">{{ number_format($average, 1) }}/5</span>
+			<!-- <span class="ml-2 text-sm font-medium text-gray-700">{{ number_format($average, 1) }}/5</span> -->
 		</div>
 		
 		@if(comments_open())

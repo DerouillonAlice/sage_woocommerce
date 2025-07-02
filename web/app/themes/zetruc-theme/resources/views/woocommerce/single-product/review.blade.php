@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 @endphp
 
 <li {{ comment_class('mb-6') }} id="li-comment-{{ comment_ID() }}">
-    <div id="comment-{{ comment_ID() }}" class="comment_container bg-white p-5 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+    <div id="comment-{{ comment_ID() }}" class="comment_container ">
         <div class="comment-text w-full">
             {{-- Suppression complète de l'avatar des avis --}}
             {{-- Nous n'exécutons pas le hook woocommerce_review_before qui afficherait normalement l'avatar --}}
