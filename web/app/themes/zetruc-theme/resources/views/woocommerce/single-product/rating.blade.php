@@ -33,14 +33,23 @@ $average      = $product->get_average_rating();
 @if($rating_count > 0)
 	<div class="woocommerce-product-rating flex items-center gap-3">
 		<div class="flex items-center">
-			<div class="flex text-yellow-400">
+			<div class="flex items-center text-yellow-400 mr-2">
 				@php
-				$rating_html = wc_get_rating_html($average, $rating_count);
-				$rating_html = str_replace('star-rating', 'star-rating flex', $rating_html);
-				echo $rating_html;
+				$full_stars = floor($average);
+				$half_star = ($average - $full_stars) >= 0.5;
 				@endphp
+				
+				@for($i = 1; $i <= 5; $i++)
+					@if($i <= $full_stars)
+						<i class="fas fa-star text-sm"></i>
+					@elseif($i == $full_stars + 1 && $half_star)
+						<i class="fas fa-star-half-alt text-sm"></i>
+					@else
+						<i class="far fa-star text-sm text-gray-300"></i>
+					@endif
+				@endfor
 			</div>
-			<!-- <span class="ml-2 text-sm font-medium text-gray-700">{{ number_format($average, 1) }}/5</span> -->
+			<span class="text-sm font-medium text-gray-700">{{ number_format($average, 1) }}/5</span>
 		</div>
 		
 		@if(comments_open())
