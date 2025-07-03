@@ -43,7 +43,7 @@ echo wc_get_stock_html( $product ); // WPCS: XSS ok.
 					'min_value'   => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
 					'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
 					'input_value' => isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity(),
-					'classes'     => apply_filters('woocommerce_quantity_input_classes', array('form-control', 'w-20', 'text-center', 'rounded-md', 'border-gray-300', 'focus:border-secondary-500', 'focus:ring', 'focus:ring-secondary-200')),
+					'classes'     => apply_filters('woocommerce_quantity_input_classes', array( 'border', 'border-gray-300', 'text-gray-900', 'text-sm', 'rounded-lg', 'focus:ring-primary-500', 'focus:border-primary-500', 'block', 'w-full', 'p-2.5',)),
 				)
 			);
 
