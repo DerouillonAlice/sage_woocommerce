@@ -21,13 +21,13 @@ defined('ABSPATH') || exit();
 
 do_action('woocommerce_before_account_orders', $has_orders); ?>
 
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-    <div class="bg-gray-100 px-6 py-4 border-b border-gray-200">
-        <h2 class="text-xl font-semibold text-gray-900 flex items-center">
-            <i class="fas fa-shopping-bag mr-3 text-secondary-600"></i>
+<div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+    <div class="bg-primary  text-white px-6 py-4 border-b border-gray-200">
+        <h2 class="text-xl font-semibold  flex items-center">
+            <i class="fas fa-shopping-bag mr-3 "></i>
             Mes commandes
         </h2>
-        <p class="text-sm text-gray-600 mt-1">Suivez l'état de vos commandes et consultez votre historique d'achats</p>
+        <p class="text-sm mt-1">Suivez l'état de vos commandes et consultez votre historique d'achats</p>
     </div>
 
     <?php if ( $has_orders ) : ?>
@@ -249,11 +249,6 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
         background-color: rgb(219 234 254);
         color: rgb(29 78 216);
         border-color: rgb(147 197 253);
-    }
-
-    .order-item:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     .page-numbers {

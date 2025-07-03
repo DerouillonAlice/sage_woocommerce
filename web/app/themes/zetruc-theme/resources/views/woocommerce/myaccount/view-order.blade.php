@@ -278,11 +278,6 @@ $notes = $order->get_customer_order_notes();
   border-bottom: 1px solid #e5e7eb;
 }
 
-.woocommerce-order-details th {
-  background-color: #f9fafb;
-  font-weight: 600;
-  color: #374151;
-}
 
 .woocommerce-order-details .product-name a {
   color: #1f2937;

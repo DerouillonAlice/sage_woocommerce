@@ -56,12 +56,12 @@ if ( $show_downloads ) {
 
 	<div class="overflow-x-auto">
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details w-full">
-			<thead>
+			<thead >
 				<tr class="bg-gray-100">
-					<th class="woocommerce-table__product-name product-name px-4 py-3 text-left text-sm font-semibold text-gray-900">
+					<th class="bg-gray-100 woocommerce-table__product-name product-name px-4 py-3 text-left text-sm font-semibold text-gray-900">
 						<?php esc_html_e( 'Produit', 'woocommerce' ); ?>
 					</th>
-					<th class="woocommerce-table__product-table product-total px-4 py-3 text-right text-sm font-semibold text-gray-900">
+					<th class="bg-gray-100 woocommerce-table__product-table product-total px-4 py-3 text-right text-sm font-semibold text-gray-900">
 						<?php esc_html_e( 'Total', 'woocommerce' ); ?>
 					</th>
 				</tr>
@@ -101,7 +101,7 @@ if ( $show_downloads ) {
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
 				?>
 					<tr>
-						<th scope="row"><?php echo esc_html( $total['label'] ); ?></th>
+						<th scope="row bg-gray-100"><?php echo esc_html( $total['label'] ); ?></th>
 						<td><?php echo wp_kses_post( $total['value'] ); ?></td>
 					</tr>
 					<?php
