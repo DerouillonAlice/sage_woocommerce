@@ -3,7 +3,7 @@
 namespace App\Fields;
 
 /**
- * Champs ACF pour le template "Exemple de Page"
+ * Champs ACF pour le template "Home"
  */
 class HomePageFields
 {
@@ -63,41 +63,8 @@ class HomePageFields
                             'type' => 'url',
                         ],
                     ],
-                ],
-                // Avantages
-                [
-                    'key' => 'field_home_advantages',
-                    'label' => 'Avantages',
-                    'name' => 'advantages',
-                    'type' => 'repeater',
-                    'min' => 1,
-                    'max' => 6,
-                    'layout' => 'row',
-                    'button_label' => 'Ajouter un avantage',
-                    'sub_fields' => [
-                        [
-                            'key' => 'field_home_advantage_icon',
-                            'label' => 'Icône/Image',
-                            'name' => 'icon',
-                            'type' => 'image',
-                            'return_format' => 'array',
-                            'preview_size' => 'thumbnail',
-                        ],
-                        [
-                            'key' => 'field_home_advantage_title',
-                            'label' => 'Titre',
-                            'name' => 'title',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'field_home_advantage_text',
-                            'label' => 'Texte',
-                            'name' => 'text',
-                            'type' => 'textarea',
-                        ],
-                    ],
-                ],
-                // Produits à la une (déjà présent)
+                ],  
+                // Produits à la une 
                 [
                     'key' => 'field_featured_products',
                     'label' => 'Produits à la une',
