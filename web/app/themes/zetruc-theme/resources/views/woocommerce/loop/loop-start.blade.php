@@ -18,10 +18,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use App\PostTypes\ShopPreferences;
+
+$shop_settings = ShopPreferences::getActiveSettings();
+$current_view = $shop_settings['default_view'];
+
+// Classes CSS pour la grille avec valeurs fixes
+$grid_classes = 'products grid gap-6 mt-5 transition-all duration-300 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+
+// Classes CSS pour la liste
+$list_classes = 'products flex flex-col gap-4 mt-5 transition-all duration-300';
 ?>
-<ul class="products grid gap-6 mt-5
-   grid-cols-1 
-   sm:grid-cols-2 
-   lg:grid-cols-3 
-   xl:grid-cols-4 
-   transition-all duration-300">
+<ul class="<?php echo $current_view === 'list' ? $list_classes : $grid_classes; ?>">

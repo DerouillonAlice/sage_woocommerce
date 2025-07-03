@@ -52,16 +52,6 @@ $average      = $product->get_average_rating();
 			<span class="text-sm font-medium text-gray-700">{{ number_format($average, 1) }}/5</span>
 		</div>
 		
-		@if(comments_open())
-			<a href="#reviews" class="text-sm font-medium text-secondary-600 hover:text-secondary-800 hover:underline flex items-center transition-colors" rel="nofollow">
-				<i class="fas fa-comment-dots mr-1"></i>
-				@php
-				printf(
-					_n('%s avis client', '%s avis clients', $review_count, 'woocommerce'),
-					'<span class="count">' . esc_html($review_count) . '</span>'
-				);
-				@endphp
-			</a>
-		@endif
+
 	</div>
 @endif

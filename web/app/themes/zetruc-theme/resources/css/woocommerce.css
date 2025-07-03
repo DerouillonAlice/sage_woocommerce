@@ -49,6 +49,102 @@
 	padding-right: 48px !important; 
 }
 
+/* Styles pour la vue liste des produits */
+.shop-view-list .product {
+	/* Hauteur minimale pour uniformiser */
+	min-height: 200px;
+}
+
+@media (min-width: 640px) {
+	.shop-view-list .product {
+		min-height: 192px; /* h-48 = 12rem = 192px */
+	}
+}
+
+/* Améliorer l'affichage responsive des boutons dans la vue liste */
+.shop-view-list .add_to_cart_button,
+.shop-view-list .product_type_variable {
+	width: 100%;
+	padding: 8px 16px;
+	font-size: 14px;
+}
+
+@media (min-width: 640px) {
+	.shop-view-list .add_to_cart_button,
+	.shop-view-list .product_type_variable {
+		width: auto;
+	}
+}
+
+/* S'assurer que les images gardent leurs proportions */
+.shop-view-list .attachment-woocommerce_thumbnail {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* Améliorer l'espacement en mode liste sur mobile */
+@media (max-width: 639px) {
+	.shop-view-list .product > div:last-child {
+		padding: 12px;
+	}
+}
+
+/* Responsive text sizing pour la vue liste */
+.shop-view-list .product h3 {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+	.shop-view-list .product h3 {
+		font-size: 18px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.shop-view-list .product h3 {
+		font-size: 20px;
+	}
+}
+
+/* Améliorer l'affichage des prix en mode liste */
+.shop-view-list .price {
+	margin-top: auto;
+}
+
+/* S'assurer que le contenu ne déborde pas en mode liste */
+.shop-view-list .product {
+	overflow: hidden;
+}
+
+.shop-view-list .line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* Styles spécifiques pour les boutons en mode liste */
+.shop-view-list .list-view-button {
+	white-space: nowrap;
+	min-width: 120px;
+	text-align: center;
+}
+
+/* Assurer que les cartes en mode liste ne sont pas trop hautes */
+@media (min-width: 640px) {
+	.shop-view-list .product {
+		max-height: 220px;
+	}
+}
+
+/* Améliorer l'affichage du contenu en mode liste pour éviter les débordements */
+.shop-view-list .product > div:last-child > div:first-child {
+	overflow: hidden;
+}
+
 .woocommerce .woocommerce-Input {
 	transition: border-color 0.2s ease;
 }

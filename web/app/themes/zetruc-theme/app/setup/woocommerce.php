@@ -76,3 +76,65 @@ add_action('wp_footer', function () {
         wc_get_template('single-product/photoswipe.php');
     }
 });
+
+/**
+ * Customization hooks for shop page using admin settings
+ */
+
+/**
+ * Apply default products per page from admin settings
+ */
+add_action('pre_get_posts', function ($query) {
+    if (!is_admin() && $query->is_main_query() && (is_shop() || is_product_category() || is_product_tag())) {
+        $shop_settings = \App\PostTypes\ShopPreferences::getActiveSettings();
+        $per_page = intval($shop_settings['default_products_per_page']);
+        
+        if ($per_page === -1) {
+            $query->set('posts_per_page', -1);
+        } else {
+            $query->set('posts_per_page', $per_page);
+        }
+    }
+});
+
+/**
+ * Apply default sorting from admin settings
+ */
+add_filter('woocommerce_default_catalog_orderby', function () {
+    $shop_settings = \App\PostTypes\ShopPreferences::getActiveSettings();
+    return $shop_settings['default_sorting'] ?? 'menu_order';
+});
+
+/**
+ * Hide/show sorting dropdown based on admin settings
+ */
+add_action('init', function () {
+    $shop_settings = \App\PostTypes\ShopPreferences::getActiveSettings();
+    
+    if (!$shop_settings['show_sorting']) {
+        remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+    }
+    
+    if (!$shop_settings['show_result_count']) {
+        remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+    }
+});
+
+/**
+ * Add CSS classes to body for shop customization
+ */
+add_filter('body_class', function ($classes) {
+    if (is_shop() || is_product_category() || is_product_tag()) {
+        $shop_settings = \App\PostTypes\ShopPreferences::getActiveSettings();
+        $card_elements = $shop_settings['product_card_elements'];
+        
+        $classes[] = 'shop-view-' . $shop_settings['default_view'];
+        
+        // Ajouter des classes pour les options d'affichage
+        foreach ($card_elements as $option => $value) {
+            $classes[] = $option . '-' . ($value ? 'yes' : 'no');
+        }
+    }
+    
+    return $classes;
+});
