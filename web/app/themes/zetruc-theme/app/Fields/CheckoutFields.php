@@ -209,7 +209,7 @@ class CheckoutFields
                     [
                         'param' => 'page',
                         'operator' => '==',
-                        'value' => '8',
+                        'value' => wc_get_page_id('checkout'),
                     ],
                 ],
             ],

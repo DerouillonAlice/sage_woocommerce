@@ -260,7 +260,7 @@ class CartFields
                     [
                         'param' => 'page',
                         'operator' => '==',
-                        'value' => '7',
+                        'value' => wc_get_page_id('cart'),
                     ],
                 ],
             ],

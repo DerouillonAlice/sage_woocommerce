@@ -1,8 +1,11 @@
-
-
 {{-- 
 Template Name: Checkout
 --}}
+
+@extends('layouts.app')
+
+@section('content')
+
 
 <?php
 /**
@@ -24,6 +27,9 @@ Template Name: Checkout
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+// Récupération de l'objet checkout de WooCommerce
+$checkout = WC()->checkout();
 
 // do_action( 'woocommerce_before_checkout_form', $checkout );
 
@@ -125,3 +131,4 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 </div>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+@endsection
