@@ -12,6 +12,13 @@ class ShopPreferences extends BasePostType
 {
     protected $postType = 'shop_preferences';
 
+    public function __construct()
+    {
+        add_action('init', [$this, 'register']);
+        add_action('acf/init', [$this, 'registerFields']);
+        add_action('admin_menu', [$this, 'redirect_to_edit'], 99);
+    }
+
     public function register()
     {
         register_post_type($this->postType, [
@@ -19,14 +26,8 @@ class ShopPreferences extends BasePostType
                 'name' => 'Préférences Boutique',
                 'singular_name' => 'Préférence Boutique',
                 'menu_name' => 'Préférences Boutique',
-                'add_new' => 'Ajouter une préférence',
-                'add_new_item' => 'Ajouter une nouvelle préférence',
-                'edit_item' => 'Éditer la préférence',
-                'new_item' => 'Nouvelle préférence',
-                'view_item' => 'Voir la préférence',
-                'search_items' => 'Rechercher les préférences',
-                'not_found' => 'Aucune préférence trouvée',
-                'not_found_in_trash' => 'Aucune préférence trouvée dans la corbeille',
+                'edit_item' => 'Éditer les préférences',
+                'view_item' => 'Voir les préférences',
             ],
             'public' => false,
             'show_ui' => true,
@@ -42,6 +43,8 @@ class ShopPreferences extends BasePostType
             'supports' => ['title'],
             'menu_position' => 10,
         ]);
+
+        add_action('init', [$this, 'create_global_post'], 99);
     }
 
     public function registerFields()
@@ -167,6 +170,45 @@ class ShopPreferences extends BasePostType
             ->setLocation('post_type', '==', $this->postType);
 
         acf_add_local_field_group($fields->build());
+    }
+
+        /**
+     * Rediriger vers l'édition du post unique quand on clique sur le menu
+     */
+    public function redirect_to_edit()
+    {
+        if (isset($_GET['post_type']) && $_GET['post_type'] === $this->postType) {
+            // Récupérer le post shop_preferences
+            $preferences_post = get_posts([
+                'post_type' => $this->postType,
+                'numberposts' => 1,
+                'post_status' => 'any'
+            ]);
+
+            if (!empty($preferences_post)) {
+                $edit_url = admin_url('post.php?post=' . $preferences_post[0]->ID . '&action=edit');
+                wp_redirect($edit_url);
+                exit;
+            }
+        }
+    }
+
+    public function create_global_post()
+    {
+        $existing = get_posts([
+            'post_type' => $this->postType,
+            'numberposts' => 1,
+            'post_status' => 'any'
+        ]);
+
+        if (empty($existing)) {
+            wp_insert_post([
+                'post_title' => 'Préférences boutique',
+                'post_type' => $this->postType,
+                'post_status' => 'publish',
+                'post_content' => 'Configuration de la boutique'
+            ]);
+        }
     }
 
     /**

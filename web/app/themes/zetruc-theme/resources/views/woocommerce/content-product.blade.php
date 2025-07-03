@@ -45,7 +45,7 @@ $current_view = $shop_settings['default_view'];
 		 */
 		?>
 		<div class="bg-gray-100 w-full h-full group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-			<div class="w-full h-full [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
+			<div class="w-full h-48 [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
 				<?php do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
 			</div>
 		</div>
