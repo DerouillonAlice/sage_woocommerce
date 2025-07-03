@@ -37,3 +37,17 @@
 
 @source "../views/";
 @source "../../app/";
+
+/* Fix pour les boutons de suppression de coupon */
+.woocommerce-remove-coupon {
+  color: #ef4444 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+
+.woocommerce-remove-coupon:hover {
+  color: #dc2626 !important;
+  text-decoration: underline !important;
+}
