@@ -40,7 +40,7 @@ class ShopPreferences extends BasePostType
             'capability_type' => 'post',
             'menu_icon' => 'dashicons-admin-settings',
             'supports' => ['title'],
-            'menu_position' => 58,
+            'menu_position' => 10,
         ]);
     }
 

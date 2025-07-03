@@ -47,87 +47,143 @@ Template Name: Cart
 
               <!-- Articles du panier -->
               <div class="divide-y divide-gray-200">
+                @php do_action('woocommerce_before_cart_contents'); @endphp
+
                 @foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item)
                   @php
-                    $_product   = $cart_item['data'];
-                    $product_id = $cart_item['product_id'];
-                    $remove_url = wc_get_cart_remove_url($cart_item_key);
+                    $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
+                    $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
+                    $product_name = apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key);
                   @endphp
-                  <div class="p-6 woocommerce-cart-form__cart-item">
-                    <div class="flex flex-col sm:flex-row gap-4">
-                      
-                      <!-- Image du produit -->
-                      @if ($_product->get_image() && ($filled_cart['show_product_images'] ?? true))
+
+                  @if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key))
+                    @php
+                      $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
+                    @endphp
+
+                    <div class="p-6 woocommerce-cart-form__cart-item {{ apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key) }}">
+                      <div class="flex flex-col sm:flex-row gap-4">
+                        
+                        <!-- Image du produit -->
                         <div class="flex-shrink-0">
                           <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-gray-100">
-                            {!! $_product->get_image('woocommerce_thumbnail', ['class' => 'w-full h-full object-cover']) !!}
+                            @php
+                              $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('woocommerce_thumbnail', ['class' => 'w-full h-full object-cover']), $cart_item, $cart_item_key);
+                            @endphp
+                            @if ($product_permalink)
+                              <a href="{{ $product_permalink }}">{!! $thumbnail !!}</a>
+                            @else
+                              {!! $thumbnail !!}
+                            @endif
                           </div>
                         </div>
-                      @endif
 
-                      <!-- Informations du produit -->
-                      <div class="flex-1 min-w-0">
-                        <h4 class="text-lg font-medium text-gray-900 mb-2">
-                          <a href="{{ $_product->get_permalink() }}" class="hover:text-primary-600 transition-colors">
-                            {!! $_product->get_name() !!}
-                          </a>
-                        </h4>
-                        
-                        <!-- Attributs du produit -->
-                        @if ($cart_item['variation'] && ($filled_cart['show_product_variations'] ?? true))
-                          <div class="text-sm text-gray-500 mb-2">
-                            @foreach ($cart_item['variation'] as $name => $value)
-                              <span class="inline-block mr-4">
-                                {{ wc_attribute_label(str_replace('attribute_', '', $name)) }}: {{ $value }}
-                              </span>
-                            @endforeach
-                          </div>
-                        @endif
-
-                        <!-- Prix unitaire -->
-                        <p class="text-sm text-gray-600 mb-3">
-                          {{ $filled_cart['unit_price_label'] ?? 'Prix unitaire :' }} <span class="font-medium">{!! $_product->get_price_html() !!}</span>
-                        </p>
-
-                        <!-- Quantité et actions -->
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center gap-3">
-                            <label class="text-sm font-medium text-gray-700">{{ $filled_cart['quantity_label'] ?? 'Quantité :' }}</label>
-                            {!! woocommerce_quantity_input([
-                                'input_name'  => "cart[{$cart_item_key}][qty]",
-                                'input_value' => $cart_item['quantity'],
-                                'max_value'   => $_product->get_max_purchase_quantity(),
-                                'min_value'   => '0',
-                                'class'       => 'w-20 border-gray-300 rounded-md text-center focus:ring-primary-500 focus:border-primary-500',
-                            ], $_product, false) !!}
-                          </div>
+                        <!-- Informations du produit -->
+                        <div class="flex-1 min-w-0">
+                          <h4 class="text-lg font-medium text-gray-900 mb-2">
+                            @if ($product_permalink)
+                              <a href="{{ $product_permalink }}" class="hover:text-primary-600 transition-colors">
+                                {!! apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) !!}
+                              </a>
+                            @else
+                              {!! $product_name !!}
+                            @endif
+                          </h4>
                           
-                          <!-- Prix total et suppression -->
-                          <div class="flex items-center gap-4">
-                            <div class="text-right">
-                              <div class="text-lg font-bold text-gray-900">
-                                {!! WC()->cart->get_product_subtotal($_product, $cart_item['quantity']) !!}
-                              </div>
+                          @php do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key); @endphp
+
+                          <!-- Meta data (variations, etc.) -->
+                          <div class="text-sm text-gray-500 mb-2">
+                            {!! wc_get_formatted_cart_item_data($cart_item) !!}
+                          </div>
+
+                          @if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity']))
+                            <p class="text-sm text-orange-600 mb-2">
+                              {!! apply_filters('woocommerce_cart_item_backorder_notification', '<span class="backorder_notification">' . esc_html__('Available on backorder', 'woocommerce') . '</span>', $product_id) !!}
+                            </p>
+                          @endif
+
+                          <!-- Prix unitaire -->
+                          <p class="text-sm text-gray-600 mb-3">
+                            Prix unitaire : <span class="font-medium">{!! apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key) !!}</span>
+                          </p>
+
+                          <!-- Quantité et actions -->
+                          <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                              <label class="text-sm font-medium text-gray-700">Quantité :</label>
+                              @php
+                                if ($_product->is_sold_individually()) {
+                                    $min_quantity = 1;
+                                    $max_quantity = 1;
+                                } else {
+                                    $min_quantity = 0;
+                                    $max_quantity = apply_filters('woocommerce_quantity_input_max', $_product->get_max_purchase_quantity(), $_product);
+                                }
+
+                                // Solution temporaire : utiliser un input HTML personnalisé pour contourner le problème
+                                $input_id = "quantity_" . $cart_item_key;
+                                $input_min = $_product->is_sold_individually() ? 1 : 0;
+                                $input_max = $_product->is_sold_individually() ? 1 : '';
+                                $input_step = apply_filters('woocommerce_quantity_input_step', 1, $_product);
+                                
+                                echo '<div class="quantity">';
+                                echo '<input type="number" ';
+                                echo 'id="' . esc_attr($input_id) . '" ';
+                                echo 'class="input-text qty text border border-gray-300 rounded px-3 py-2 w-20 text-center" ';
+                                echo 'name="cart[' . $cart_item_key . '][qty]" ';
+                                echo 'value="' . esc_attr($cart_item['quantity']) . '" ';
+                                echo 'aria-label="Quantité du produit" ';
+                                echo 'size="4" ';
+                                echo 'min="' . esc_attr($input_min) . '" ';
+                                if (!empty($input_max)) echo 'max="' . esc_attr($input_max) . '" ';
+                                echo 'step="' . esc_attr($input_step) . '" ';
+                                echo 'placeholder="" ';
+                                echo 'inputmode="numeric" ';
+                                echo 'autocomplete="off" />';
+                                echo '</div>';
+                              @endphp
                             </div>
-                            <button type="button" onclick="window.location.href='{{ $remove_url }}'" class="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition-colors" title="{{ $filled_cart['remove_item_tooltip'] ?? 'Supprimer cet article' }}">
-                              <i class="fas fa-trash-alt"></i>
-                            </button>
+                            
+                            <!-- Prix total et suppression -->
+                            <div class="flex items-center gap-4">
+                              <div class="text-right">
+                                <div class="text-lg font-bold text-gray-900">
+                                  {!! apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key) !!}
+                                </div>
+                              </div>
+                              @php
+                                echo apply_filters(
+                                    'woocommerce_cart_item_remove_link',
+                                    sprintf(
+                                        '<a href="%s" class="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition-colors remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" title="Supprimer cet article"><i class="fas fa-trash-alt"></i></a>',
+                                        esc_url(wc_get_cart_remove_url($cart_item_key)),
+                                        esc_attr(sprintf(__('Remove %s from cart', 'woocommerce'), wp_strip_all_tags($product_name))),
+                                        esc_attr($product_id),
+                                        esc_attr($_product->get_sku())
+                                    ),
+                                    $cart_item_key
+                                );
+                              @endphp
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  @endif
                 @endforeach
+
+                @php do_action('woocommerce_cart_contents'); @endphp
               </div>
 
               <!-- Actions du panier -->
               <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
-                <div class="flex flex-col sm:flex-row gap-3 justify-between">
+                <div class="flex justify-center">
                   <a href="{{ wc_get_page_permalink('shop') }}" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 bg-white rounded-md hover:bg-gray-50 transition-colors">
                     <i class="fas fa-arrow-left mr-2"></i>
                     {{ $cart_actions['continue_shopping_text'] ?? 'Continuer mes achats' }}
                   </a>
-                  <button type="submit" name="update_cart" value="{{ __('Update cart', 'woocommerce') }}" class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+                  <button type="submit" class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors" name="update_cart" value="{{ __('Update cart', 'woocommerce') }}">
                     <i class="fas fa-sync-alt mr-2"></i>
                     {{ $cart_actions['update_cart_text'] ?? 'Mettre à jour le panier' }}
                   </button>
@@ -135,8 +191,6 @@ Template Name: Cart
               </div>
             </div>
 
-            @php do_action('woocommerce_cart_contents'); @endphp
-            {!! wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce', true, false) !!}
             @php do_action('woocommerce_after_cart_contents'); @endphp
             @php do_action('woocommerce_after_cart_table'); @endphp
           </form>
@@ -171,9 +225,10 @@ Template Name: Cart
         <!-- Colonne latérale - Récapitulatif et checkout -->
         <div class="lg:col-span-1">
           <div class="sticky top-6">
-            <!-- Récapitulatif de commande -->
-            @include('woocommerce.cart.cart-totals')
-            
+            @php do_action('woocommerce_before_cart_collaterals'); @endphp
+            <div class="cart-collaterals">
+              @php do_action('woocommerce_cart_collaterals'); @endphp
+            </div>
           </div>
         </div>
 

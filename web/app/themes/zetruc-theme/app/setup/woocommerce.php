@@ -138,3 +138,39 @@ add_filter('body_class', function ($classes) {
     
     return $classes;
 });
+
+/**
+ * Update Cart Automatically on Quantity Change
+ */
+add_action('wp_head', function() {
+    if (is_cart()) {
+        ?>
+        <style>
+        .woocommerce button[name="update_cart"],
+        .woocommerce input[name="update_cart"] {
+            display: none;
+        }
+        </style>
+        <?php
+    }
+});
+
+add_action('wp_footer', function() {
+    if (is_cart()) {
+        ?>
+        <script>
+        jQuery(function($) {
+            let timeout;
+            $('.woocommerce').on('change', 'input.qty', function(){
+                if (timeout !== undefined) {
+                    clearTimeout(timeout);
+                }
+                timeout = setTimeout(function() {
+                    $("[name='update_cart']").trigger("click");
+                }, 1000);
+            });
+        });
+        </script>
+        <?php
+    }
+});
