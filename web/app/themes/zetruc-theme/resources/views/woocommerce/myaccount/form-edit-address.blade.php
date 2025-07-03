@@ -104,15 +104,15 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 
 			<!-- Pied du formulaire -->
 			<div class="bg-gray-50 px-8 py-6 border-t border-gray-200">
-				<div class="flex items-center justify-between">
+				<div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
 					<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>" 
-					   class="inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+					   class="inline-flex items-center w-full sm:w-fit px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
 						<i class="fas fa-arrow-left mr-2"></i>
 						Retour
 					</a>
 					
 					<button type="submit" 
-							class="inline-flex items-center px-6 py-3 <?php echo ( 'billing' === $load_address ) ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-600 hover:bg-primary-700'; ?> text-white font-medium rounded-lg shadow-sm transition-colors duration-200" 
+							class="inline-flex items-center w-full sm:w-fit px-6 py-3 <?php echo ( 'billing' === $load_address ) ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-600 hover:bg-primary-700'; ?> text-white font-medium rounded-lg shadow-sm transition-colors duration-200" 
 							name="save_address" 
 							value="<?php esc_attr_e( 'Save address', 'woocommerce' ); ?>">
 						<i class="fas fa-save mr-2"></i>

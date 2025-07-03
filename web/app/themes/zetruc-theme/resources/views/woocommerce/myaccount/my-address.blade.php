@@ -101,7 +101,7 @@ $col    = 1;
 				
 				<!-- Statut de l'adresse -->
 				<div class="mt-4 pt-4 border-t border-gray-100">
-					<div class="flex items-center justify-between">
+					<div class="flex items-center gap-4 flex-col  sm:flex-row justify-between">
 						<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
 							<i class="fas fa-check-circle mr-1"></i>
 							Adresse configurée

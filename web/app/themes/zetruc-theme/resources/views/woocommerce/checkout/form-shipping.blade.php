@@ -93,7 +93,7 @@ defined('ABSPATH') || exit;
 				
 				$field['input_class'] = array_merge(
 					isset($field['input_class']) ? $field['input_class'] : [],
-					['w-full', 'px-3', 'py-2', 'resize-none'  ,'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500', 'resize-y']
+					['w-full', 'px-3', 'py-2', 'resize-none', 'h-32'  ,'border', 'border-gray-300', 'rounded-md', 'shadow-sm', 'focus:outline-none', 'focus:ring-2', 'focus:ring-secondary-500', 'focus:border-secondary-500']
 				);
 				
 				$field['label_class'] = array_merge(
