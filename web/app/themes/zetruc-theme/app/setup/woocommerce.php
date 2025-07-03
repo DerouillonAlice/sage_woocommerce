@@ -19,6 +19,14 @@ add_action('after_setup_theme', function () {
 });
 
 /**
+ * Remove WooCommerce sale flash to avoid duplication
+ * We use a custom sale badge in the title template
+ */
+add_action('init', function () {
+    remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
+});
+
+/**
  * Enqueue PhotoSwipe scripts and styles
  */
 add_action('wp_enqueue_scripts', function () {

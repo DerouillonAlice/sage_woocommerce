@@ -20,7 +20,7 @@ $card_elements = $shop_settings['product_card_elements'];
 $current_view = $shop_settings['default_view'];
 ?>
 <li <?php 
-	$classes = 'bg-white rounded-lg border border-gray-200  overflow-hidden';
+	$classes = 'bg-white rounded-lg border border-gray-200 flex flex-col overflow-hidden';
 	if ($current_view === 'list') {
 		$classes .= ' flex flex-col sm:flex-row items-stretch h-auto sm:h-48';
 	}
