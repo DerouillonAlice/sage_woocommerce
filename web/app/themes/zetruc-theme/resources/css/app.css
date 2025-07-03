@@ -51,3 +51,152 @@
   color: #dc2626 !important;
   text-decoration: underline !important;
 }
+
+
+
+/* Navigation menu styles */
+.menu a {
+  color: rgb(55 65 81);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: rgb(var(--color-primary-600));
+}
+
+.menu .current-menu-item > a,
+.menu .current_page_item > a {
+  color: rgb(var(--color-primary-600));
+  font-weight: 600;
+}
+
+/* Navigation mobile */
+#mobile-menu .menu a {
+  display: block;
+  color: rgb(55 65 81);
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+#mobile-menu .menu a:hover {
+  color: rgb(var(--color-primary-600));
+  background-color: rgb(249 250 251);
+}
+
+#mobile-menu .current-menu-item > a,
+#mobile-menu .current_page_item > a {
+  color: rgb(var(--color-primary-600));
+  background-color: rgb(var(--color-primary-50));
+  font-weight: 600;
+}
+
+/* Submenu styles */
+.menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem;
+  width: 12rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(229 231 235);
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.menu .menu-item:hover .sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu .sub-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: rgb(55 65 81);
+  transition: all 0.2s ease;
+}
+
+.menu .sub-menu a:hover {
+  background-color: rgb(243 244 246);
+  color: rgb(var(--color-primary-600));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Header cart dropdown */
+.group:hover .cart-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cart-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 9999;
+}
+
+/* Scrollbar pour l'aperçu du panier */
+.cart-dropdown .overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cart-dropdown .overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.cart-dropdown .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.cart-dropdown .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Assurer que le header reste au-dessus */
+header {
+  z-index: 1000;
+  position: relative;
+}
+
+/* Animation pour le badge du panier */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .8;
+  }
+}
+
+.cart-badge {
+  animation: pulse 2s infinite;
+}
