@@ -26,7 +26,7 @@ if ( ! $product_attributes ) {
 <div class="woocommerce-product-attributes-wrapper bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
 	<div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
 		<h3 class="text-lg font-semibold text-gray-900 flex items-center">
-			<i class="fas fa-info-circle mr-2 text-blue-600"></i>
+			<i class="fas fa-info-circle mr-2 text-secondary-600"></i>
 			<?php esc_html_e( 'Informations complémentaires', 'woocommerce' ); ?>
 		</h3>
 	</div>

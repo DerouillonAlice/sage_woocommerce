@@ -63,8 +63,8 @@ $total_spent = wc_get_customer_total_spent( get_current_user_id() );
 		<div class="bg-white rounded-xl  p-6 border border-gray-200">
 			<div class="flex items-center">
 				<div class="flex-shrink-0">
-					<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-						<i class="fas fa-shopping-bag text-blue-600 text-xl"></i>
+					<div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
+						<i class="fas fa-shopping-bag text-secondary-600 text-xl"></i>
 					</div>
 				</div>
 				<div class="ml-4">

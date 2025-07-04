@@ -112,8 +112,8 @@ defined( 'ABSPATH' ) || exit;
                 
                 <!-- Numéro de commande -->
                 <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
-                  <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-hashtag text-blue-600"></i>
+                  <div class="flex-shrink-0 w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hashtag text-secondary-600"></i>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-gray-900"><?php esc_html_e( 'Numéro de commande', 'woocommerce' ); ?></p>
@@ -123,8 +123,8 @@ defined( 'ABSPATH' ) || exit;
 
                 <!-- Date -->
                 <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
-                  <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-calendar-alt text-green-600"></i>
+                  <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-calendar-alt text-primary-600"></i>
                   </div>
                   <div>
                     <p class="text-sm font-medium text-gray-900"><?php esc_html_e( 'Date de commande', 'woocommerce' ); ?></p>
@@ -180,13 +180,13 @@ defined( 'ABSPATH' ) || exit;
                       <?php 
                       $status = $order->get_status();
                       if ($status === 'completed') {
-                        echo 'bg-green-100 text-green-800';
+                        echo 'bg-primary-100 text-primary-800';
                       } elseif ($status === 'processing') {
                         echo 'bg-yellow-100 text-yellow-800';
                       } elseif ($status === 'pending') {
                         echo 'bg-gray-100 text-gray-800';
                       } else {
-                        echo 'bg-blue-100 text-blue-800';
+                        echo 'bg-secondary-100 text-secondary-800';
                       }
                       ?>">
                       <i class="fas fa-circle mr-1 text-xs"></i>

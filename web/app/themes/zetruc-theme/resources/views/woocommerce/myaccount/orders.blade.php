@@ -90,7 +90,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                                             $status_icon = 'fas fa-clock';
                                             break;
                                         case 'completed':
-                                            $status_class = 'bg-green-100 text-green-800 border-green-200';
+                                            $status_class = 'bg-primary-100 text-primary-800 border-primary-200';
                                             $status_icon = 'fas fa-check-circle';
                                             break;
                                         case 'cancelled':
@@ -162,7 +162,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
                                 
                                 switch ($key) {
                                     case 'pay':
-                                        $button_class = 'bg-green-600 text-white hover:bg-green-700';
+                                        $button_class = 'bg-primary-600 text-white hover:bg-primary-700';
                                         $icon = 'fas fa-credit-card';
                                         break;
                                     case 'cancel':
@@ -358,7 +358,7 @@ do_action('woocommerce_before_account_orders', $has_orders); ?>
               </div>
               <div class="space-y-3">
                 <div class="flex items-center">
-                  <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                  <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
                   <div class="flex-1">
                     <p class="text-sm font-medium text-gray-900">Commande confirmée</p>
                     <p class="text-xs text-gray-500">Il y a 2 jours</p>

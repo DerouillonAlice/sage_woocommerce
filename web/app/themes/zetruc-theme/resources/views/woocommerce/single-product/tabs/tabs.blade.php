@@ -37,7 +37,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 				<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 					<li role="presentation" class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>">
 						<a href="#tab-<?php echo esc_attr( $key ); ?>" 
-                           class="tab-link inline-block px-6 py-4 font-medium text-sm transition-all duration-200 border-b-2 <?php echo $first_tab ? 'border-blue-500 text-blue-600 bg-white' : 'border-transparent text-gray-600 hover:text-blue-600 hover:border-blue-300 hover:bg-gray-100'; ?>" 
+                           class="tab-link inline-block px-6 py-4 font-medium text-sm transition-all duration-200 border-b-2 <?php echo $first_tab ? 'border-secondary-500 text-secondary-600 bg-white' : 'border-transparent text-gray-600 hover:text-secondary-600 hover:border-secondary-300 hover:bg-gray-100'; ?>" 
                            role="tab" 
                            aria-controls="tab-<?php echo esc_attr( $key ); ?>"
                            data-tab="<?php echo esc_attr( $key ); ?>">
@@ -75,7 +75,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 				
 				// Retirer l'état actif de tous les onglets
 				tabLinks.forEach(function(l) {
-					l.classList.remove('border-blue-500', 'text-blue-600', 'bg-white');
+					l.classList.remove('border-secondary-500', 'text-secondary-600', 'bg-white');
 					l.classList.add('border-transparent', 'text-gray-600');
 				});
 				
@@ -85,7 +85,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 				});
 				
 				// Activer l'onglet cliqué
-				this.classList.add('border-blue-500', 'text-blue-600', 'bg-white');
+				this.classList.add('border-secondary-500', 'text-secondary-600', 'bg-white');
 				this.classList.remove('border-transparent', 'text-gray-600');
 				
 				// Afficher le panneau correspondant

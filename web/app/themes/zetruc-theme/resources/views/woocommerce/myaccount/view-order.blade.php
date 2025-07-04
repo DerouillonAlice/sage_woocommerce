@@ -48,7 +48,7 @@ $notes = $order->get_customer_order_notes();
               $status_icon = 'fas fa-clock';
               break;
             case 'completed':
-              $status_class = 'bg-green-100 text-green-800 border-green-200';
+              $status_class = 'bg-primary-100 text-primary-800 border-primary-200';
               $status_icon = 'fas fa-check-circle';
               break;
             case 'cancelled':
@@ -105,14 +105,14 @@ $notes = $order->get_customer_order_notes();
         <div class="relative">
           <div class="flex justify-between items-center">
             <div class="flex flex-col items-center text-center">
-              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white mb-2">
+              <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white mb-2">
                 <i class="fas fa-check text-sm"></i>
               </div>
               <span class="text-xs text-gray-600">Confirmée</span>
             </div>
-            <div class="flex-1 h-1 bg-green-500 mx-2"></div>
+            <div class="flex-1 h-1 bg-primary-500 mx-2"></div>
             <div class="flex flex-col items-center text-center">
-              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'processing' ? 'secondary-500' : 'green-500'; ?> rounded-full flex items-center justify-center text-white mb-2">
+              <div class="w-8 h-8 bg-<?php echo $order->get_status() === 'processing' ? 'secondary-500' : 'primary-500'; ?> rounded-full flex items-center justify-center text-white mb-2">
                 <i class="fas fa-<?php echo $order->get_status() === 'processing' ? 'cog fa-spin' : 'check'; ?> text-sm"></i>
               </div>
               <span class="text-xs text-gray-600">En préparation</span>
@@ -209,7 +209,7 @@ $notes = $order->get_customer_order_notes();
           <!-- Adresse de livraison -->
             <div class="border-t border-gray-200 pt-4">
               <h4 class="font-medium text-gray-900 mb-2 flex items-center">
-                <i class="fas fa-truck mr-2 text-green-600"></i>
+                <i class="fas fa-truck mr-2 text-primary-600"></i>
                 Livraison
               </h4>
               <div class="text-sm text-gray-600">

@@ -32,7 +32,7 @@ $verified = wc_review_is_from_verified_owner($comment->comment_ID);
         <span class="woocommerce-review__author font-medium text-gray-800">{{ get_comment_author() }}</span>
         
         @if('yes' === get_option('woocommerce_review_rating_verification_label') && $verified)
-            <span class="woocommerce-review__verified verified inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            <span class="woocommerce-review__verified verified inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                 <i class="fas fa-check-circle mr-1"></i>
                 {{ esc_attr__('achat vérifié', 'woocommerce') }}
             </span>

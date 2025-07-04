@@ -63,7 +63,7 @@ echo wc_get_stock_html( $product ); // WPCS: XSS ok.
 				</button>
 				
 				{{-- Message de succès moderne --}}
-				<div class="success-message hidden absolute inset-0 bg-green-600 text-white flex items-center justify-center rounded-md">
+				<div class="success-message hidden absolute inset-0 bg-primary-600 text-white flex items-center justify-center rounded-md">
 					<svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
 						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 					</svg>

@@ -96,7 +96,7 @@ if ( $show_downloads ) {
 			?>
 		
 			<?php endif ?>
-		<tfoot>
+		<tfoot class="text-left">
 			<?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
 				?>

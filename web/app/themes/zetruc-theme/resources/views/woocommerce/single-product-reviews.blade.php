@@ -350,8 +350,8 @@ if ( ! comments_open() ) {
 						indicator.innerHTML = '<i class="fas fa-exclamation-circle text-orange-500 mr-1"></i>Encore ' + (minLength - length) + ' caractères minimum';
 						indicator.className = 'char-indicator text-xs mt-1 text-orange-600';
 					} else {
-						indicator.innerHTML = '<i class="fas fa-check-circle text-green-500 mr-1"></i>' + length + ' caractères - Parfait !';
-						indicator.className = 'char-indicator text-xs mt-1 text-green-600';
+						indicator.innerHTML = '<i class="fas fa-check-circle text-primary-500 mr-1"></i>' + length + ' caractères - Parfait !';
+						indicator.className = 'char-indicator text-xs mt-1 text-primary-600';
 					}
 				});
 			}

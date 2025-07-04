@@ -36,8 +36,8 @@ defined( 'ABSPATH' ) || exit;
   <div class="container mx-auto px-4">
     
     <div class="max-w-2xl mx-auto text-center mb-8">
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-        <i class="fas fa-check text-3xl text-green-600"></i>
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-primary-100 rounded-full mb-6">
+        <i class="fas fa-check text-3xl text-primary-600"></i>
       </div>
 
       <!-- Message de confirmation -->
@@ -95,8 +95,8 @@ defined( 'ABSPATH' ) || exit;
                   
                   <!-- Date de commande -->
                   <div class="flex items-start space-x-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-calendar-alt text-blue-600"></i>
+                    <div class="flex-shrink-0 w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-calendar-alt text-secondary-600"></i>
                     </div>
                     <div>
                       <p class="text-sm font-medium text-gray-900">Date de commande</p>
@@ -119,8 +119,8 @@ defined( 'ABSPATH' ) || exit;
 
                   <!-- Statut -->
                   <div class="flex items-start space-x-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-check-circle text-green-600"></i>
+                    <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                      <i class="fas fa-check-circle text-primary-600"></i>
                     </div>
                     <div>
                       <p class="text-sm font-medium text-gray-900">Statut</p>
@@ -128,13 +128,13 @@ defined( 'ABSPATH' ) || exit;
                         <?php 
                         $status = $order->get_status();
                         if ($status === 'completed') {
-                          echo 'bg-green-100 text-green-800';
+                          echo 'bg-primary-100 text-primary-800';
                         } elseif ($status === 'processing') {
                           echo 'bg-yellow-100 text-yellow-800';
                         } elseif ($status === 'pending') {
                           echo 'bg-gray-100 text-gray-800';
                         } else {
-                          echo 'bg-blue-100 text-blue-800';
+                          echo 'bg-secondary-100 text-secondary-800';
                         }
                         ?>">
                         <?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
