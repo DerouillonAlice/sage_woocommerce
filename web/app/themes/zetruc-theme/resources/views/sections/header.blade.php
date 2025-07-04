@@ -1,13 +1,13 @@
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <!-- Header principal -->
   <div class="border-b border-gray-200">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+    <div class="container mx-auto px-3 sm:px-4 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16">
         
         {{-- Logo --}}
         <div class="flex-shrink-0">
           <a href="{{ home_url('/') }}" class="flex items-center">
-            <span class="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
+            <span class="text-lg sm:text-xl lg:text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
               {{ get_bloginfo('name') }}
             </span>
           </a>
@@ -39,36 +39,36 @@
         </div>
 
         {{-- Actions utilisateur --}}
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
           
           {{-- Bouton recherche mobile --}}
           <button type="button" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors" id="mobile-search-toggle">
-            <i class="fas fa-search text-xl"></i>
+            <i class="fas fa-search text-lg sm:text-xl"></i>
           </button>
 
           {{-- Panier --}}
           <div class="relative group">
             <a href="{{ wc_get_cart_url() }}" class="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
-              <i class="fas fa-shopping-cart text-2xl"></i>
+              <i class="fas fa-shopping-cart text-lg sm:text-xl lg:text-2xl"></i>
               
               {{-- Badge de nombre d'articles --}}
               @if(WC()->cart->get_cart_contents_count() > 0)
-                <span class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold min-w-[20px]">
+                <span class="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-semibold min-w-[16px] sm:min-w-[20px]">
                   {{ WC()->cart->get_cart_contents_count() }}
                 </span>
               @endif
             </a>
             
             {{-- Aperçu du panier (dropdown) --}}
-            <div class="cart-dropdown absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+            <div class="cart-dropdown hidden md:block absolute right-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
               @if(WC()->cart->get_cart_contents_count() > 0)
-                <div class="p-4">
+                <div class="p-3 sm:p-4">
                   <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-semibold text-gray-900">Mon Panier</h3>
-                    <span class="text-sm text-gray-500">{{ WC()->cart->get_cart_contents_count() }} article(s)</span>
+                    <h3 class="font-semibold text-gray-900 text-sm sm:text-base">Mon Panier</h3>
+                    <span class="text-xs sm:text-sm text-gray-500">{{ WC()->cart->get_cart_contents_count() }} article(s)</span>
                   </div>
                   
-                  <div class="space-y-3 max-h-64 overflow-y-auto">
+                  <div class="space-y-2 sm:space-y-3 max-h-56 sm:max-h-64 overflow-y-auto">
                     @foreach(WC()->cart->get_cart() as $cart_item_key => $cart_item)
                       @php
                         $product = $cart_item['data'];
@@ -76,25 +76,25 @@
                         $line_total = $cart_item['line_total'];
                         $product_price = $product->get_price();
                       @endphp
-                      <div class="flex items-start space-x-3 py-2 border-b border-gray-100 last:border-0">
-                        <div class="flex-shrink-0 w-12 h-12 bg-gray-100 rounded overflow-hidden">
+                      <div class="flex items-start space-x-2 sm:space-x-3 py-2 border-b border-gray-100 last:border-0">
+                        <div class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded overflow-hidden">
                           @if($product->get_image_id())
                             <img src="{{ wp_get_attachment_image_url($product->get_image_id(), 'thumbnail') }}" 
                                  alt="{{ $product->get_name() }}" 
-                                 class="w-12 h-12 object-cover">
+                                 class="w-10 h-10 sm:w-12 sm:h-12 object-cover">
                           @else
-                            <div class="w-12 h-12 bg-gray-200 flex items-center justify-center">
-                             <i class="fas fa-box-open text-gray-400 text-2xl"></i>
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 flex items-center justify-center">
+                             <i class="fas fa-box-open text-gray-400 text-lg sm:text-2xl"></i>
                             </div>
                           @endif
                         </div>
                         <div class="flex-1 min-w-0">
-                          <h4 class="text-sm font-medium text-gray-900 truncate leading-tight">{{ $product->get_name() }}</h4>
+                          <h4 class="text-xs sm:text-sm font-medium text-gray-900 truncate leading-tight">{{ $product->get_name() }}</h4>
                           <div class="text-xs text-gray-500 mt-1">
                             Qté: {{ $quantity }} × {!! html_entity_decode(strip_tags(wc_price($product_price))) !!}
                           </div>
                         </div>
-                        <div class="flex-shrink-0 text-sm font-semibold text-gray-900">
+                        <div class="flex-shrink-0 text-xs sm:text-sm font-semibold text-gray-900">
                           {!! html_entity_decode(strip_tags(wc_price($line_total))) !!}
                         </div>
                       </div>
@@ -103,26 +103,26 @@
                   
                   <div class="border-t border-gray-200 pt-3 mt-3">
                     <div class="flex items-center justify-between mb-3">
-                      <span class="font-semibold text-gray-900">Total:</span>
-                      <span class="font-bold text-lg text-primary-600">{!! html_entity_decode(strip_tags(WC()->cart->get_cart_subtotal())) !!}</span>
+                      <span class="font-semibold text-gray-900 text-sm sm:text-base">Total:</span>
+                      <span class="font-bold text-base sm:text-lg text-primary-600">{!! html_entity_decode(strip_tags(WC()->cart->get_cart_subtotal())) !!}</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                      <a href="{{ wc_get_cart_url() }}" class="text-center px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-sm">
+                      <a href="{{ wc_get_cart_url() }}" class="text-center px-2 sm:px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-xs sm:text-sm">
                         Voir panier
                       </a>
-                      <a href="{{ wc_get_checkout_url() }}" class="text-center px-3 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-sm">
+                      <a href="{{ wc_get_checkout_url() }}" class="text-center px-2 sm:px-3 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-xs sm:text-sm">
                         Commander
                       </a>
                     </div>
                   </div>
                 </div>
               @else
-                <div class="p-4 text-center">
+                <div class="p-3 sm:p-4 text-center">
                   <div class="text-gray-400 mb-3">
-                    <i class="fas fa-shopping-cart text-5xl"></i>
+                    <i class="fas fa-shopping-cart text-4xl sm:text-5xl"></i>
                   </div>
-                  <p class="text-gray-500 text-sm mb-3">Votre panier est vide</p>
-                  <a href="{{ get_permalink(wc_get_page_id('shop')) }}" class="inline-block px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-sm">
+                  <p class="text-gray-500 text-xs sm:text-sm mb-3">Votre panier est vide</p>
+                  <a href="{{ get_permalink(wc_get_page_id('shop')) }}" class="inline-block px-3 sm:px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-xs sm:text-sm">
                     Voir la boutique
                   </a>
                 </div>
@@ -133,25 +133,25 @@
           {{-- Compte utilisateur --}}
           <div class="relative group">
             <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="flex items-center p-2 text-gray-600 hover:text-primary-600 transition-colors">
-              <i class="fas fa-user text-2xl"></i>
+              <i class="fas fa-user text-lg sm:text-xl lg:text-2xl"></i>
             </a>
             
             {{-- Menu déroulant utilisateur --}}
-            <div class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <div class="absolute right-0 top-full mt-2 w-44 sm:w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
               @if(is_user_logged_in())
                 <div class="p-3 border-b border-gray-200">
-                  <p class="text-sm text-gray-600">Connecté en tant que</p>
-                  <p class="font-medium text-gray-900 truncate">{{ wp_get_current_user()->display_name }}</p>
+                  <p class="text-xs sm:text-sm text-gray-600">Connecté en tant que</p>
+                  <p class="font-medium text-gray-900 truncate text-sm">{{ wp_get_current_user()->display_name }}</p>
                 </div>
                 <div class="py-2">
-                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mon compte</a>
-                  <a href="{{ wc_get_account_endpoint_url('orders') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mes commandes</a>
-                  <a href="{{ wp_logout_url(home_url()) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a>
+                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100">Mon compte</a>
+                  <a href="{{ wc_get_account_endpoint_url('orders') }}" class="block px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100">Mes commandes</a>
+                  <a href="{{ wp_logout_url(home_url()) }}" class="block px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a>
                 </div>
               @else
                 <div class="py-2">
-                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Se connecter</a>
-                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Créer un compte</a>
+                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100">Se connecter</a>
+                  <a href="{{ get_permalink( get_option('woocommerce_myaccount_page_id') ) }}" class="block px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100">Créer un compte</a>
                 </div>
               @endif
             </div>
@@ -159,7 +159,7 @@
 
           {{-- Menu burger mobile --}}
           <button type="button" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-toggle">
-            <i class="fas fa-bars text-xl"></i>
+            <i class="fas fa-bars text-lg sm:text-xl"></i>
           </button>
         </div>
       </div>
@@ -168,10 +168,10 @@
 
   {{-- Barre de recherche mobile --}}
   <div class="md:hidden border-b border-gray-200 bg-gray-50 hidden" id="mobile-search">
-    <div class="container mx-auto px-4 py-3">
+    <div class="container mx-auto px-3 sm:px-4 py-3">
       <form role="search" method="get" action="{{ home_url('/') }}">
         <div class="space-y-3">
-          <select name="product_cat" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <select name="product_cat" class="w-full bg-white border border-gray-300 rounded-lg px-3 py-2.5 text-sm ">
             <option value="">Toutes catégories</option>
             @foreach(get_terms('product_cat', ['hide_empty' => true]) as $category)
               <option value="{{ $category->slug }}" {{ request('product_cat') == $category->slug ? 'selected' : '' }}>
@@ -182,11 +182,11 @@
           <div class="flex">
             <input type="search" 
                    name="s" 
-                   class="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" 
+                   class="flex-1 px-3 sm:px-4 py-2.5 border border-gray-300 rounded-l-lg text-sm" 
                    placeholder="Rechercher un produit..." 
                    value="{{ get_search_query() }}" />
             <input type="hidden" name="post_type" value="product" />
-            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors">
+            <button type="submit" class="px-3 sm:px-4 py-2.5 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -197,12 +197,12 @@
 
   {{-- Navigation principale --}}
   <nav class="border-b border-gray-200 bg-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto px-3 sm:px-4 lg:px-8">
       {{-- Navigation desktop --}}
       <div class="hidden md:block">
         {!! wp_nav_menu([
           'theme_location' => 'header_navigation',
-          'menu_class' => 'flex items-center space-x-8 py-4',
+          'menu_class' => 'flex items-center space-x-6 lg:space-x-8 py-3 lg:py-4',
           'container' => false,
           'echo' => false,
           'link_before' => '',
@@ -214,7 +214,7 @@
 
       {{-- Navigation mobile --}}
       <div class="md:hidden hidden" id="mobile-menu">
-        <div class="py-3 space-y-1">
+        <div class="py-2 sm:py-3 space-y-1">
           {!! wp_nav_menu([
             'theme_location' => 'header_navigation',
             'menu_class' => 'space-y-1',
@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Changer l'icône du bouton
       const icon = this.querySelector('i');
       if (mobileMenu.classList.contains('hidden')) {
-        icon.className = 'fas fa-bars text-xl';
+        icon.className = 'fas fa-bars text-lg sm:text-xl';
       } else {
-        icon.className = 'fas fa-times text-xl';
+        icon.className = 'fas fa-times text-lg sm:text-xl';
       }
     });
   }
