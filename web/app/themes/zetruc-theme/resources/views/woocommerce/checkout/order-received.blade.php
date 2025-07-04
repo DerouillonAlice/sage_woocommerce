@@ -106,10 +106,9 @@ defined( 'ABSPATH' ) || exit;
 
                   <!-- Email -->
                   <div class="flex items-start space-x-3">
-                    <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z"></path>
-                      </svg>
+                    <div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+					<i class="fas fa-envelope text-primary-600"></i>
+
                     </div>
                     <div>
                       <p class="text-sm font-medium text-gray-900">Email de confirmation</p>
@@ -145,8 +144,8 @@ defined( 'ABSPATH' ) || exit;
                   <?php if ( $order->get_payment_method_title() ) : ?>
                     <!-- Mode de paiement -->
                     <div class="flex items-start space-x-3">
-                      <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-credit-card text-indigo-600"></i>
+                      <div class="flex-shrink-0 w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-credit-card text-secondary-600"></i>
                       </div>
                       <div>
                         <p class="text-sm font-medium text-gray-900">Mode de paiement</p>

@@ -28,7 +28,33 @@ do_action( 'woocommerce_before_account_navigation' );
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<?php
 				$is_logout = $endpoint === 'customer-logout';
-				$link_classes = 'block px-4 py-2 rounded-lg transition-colors duration-150 font-medium ';
+				$link_classes = 'flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-150 font-medium ';
+				
+				// Icônes pour chaque endpoint
+				$icon_class = '';
+				switch ($endpoint) {
+					case 'dashboard':
+						$icon_class = 'fas fa-tachometer-alt';
+						break;
+					case 'orders':
+						$icon_class = 'fas fa-shopping-bag';
+						break;
+					case 'downloads':
+						$icon_class = 'fas fa-download';
+						break;
+					case 'edit-address':
+						$icon_class = 'fas fa-map-marker-alt';
+						break;
+					case 'edit-account':
+						$icon_class = 'fas fa-user-edit';
+						break;
+					case 'customer-logout':
+						$icon_class = 'fas fa-sign-out-alt';
+						break;
+					default:
+						$icon_class = 'fas fa-user';
+				}
+				
 				if ($is_logout) {
 					$link_classes .= 'text-error hover:bg-error-50 hover:text-error-600';
 				} else {
@@ -42,7 +68,8 @@ do_action( 'woocommerce_before_account_navigation' );
 				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"
 				   class="<?php echo $link_classes; ?>"
 				   <?php echo wc_is_current_account_menu_item( $endpoint ) ? 'aria-current="page"' : ''; ?>>
-					<?php echo esc_html( $label ); ?>
+					<i class="<?php echo $icon_class; ?> w-4 h-4"></i>
+					<span><?php echo esc_html( $label ); ?></span>
 				</a>
 			</li>
 		<?php endforeach; ?>

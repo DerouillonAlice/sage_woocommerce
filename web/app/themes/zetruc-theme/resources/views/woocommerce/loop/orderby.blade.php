@@ -44,9 +44,7 @@ if (!isset($orderby)) {
 ?>
 <form class="woocommerce-ordering flex items-center gap-2" method="get">
   <label for="woocommerce-orderby-<?php echo esc_attr( $id_suffix ); ?>" class="text-sm font-medium text-gray-700 whitespace-nowrap">
-    <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/>
-    </svg>
+    <i class="fas fa-sort w-4 h-4 inline mr-1"></i>
     Trier par
   </label>
   <select

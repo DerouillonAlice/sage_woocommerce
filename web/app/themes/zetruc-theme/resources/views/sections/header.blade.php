@@ -32,9 +32,7 @@
                      value="{{ get_search_query() }}" />
               <input type="hidden" name="post_type" value="product" />
               <button type="submit" class="flex-shrink-0 px-6 py-2.5 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+                <i class="fas fa-search"></i>
               </button>
             </div>
           </form>
@@ -45,9 +43,7 @@
           
           {{-- Bouton recherche mobile --}}
           <button type="button" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors" id="mobile-search-toggle">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
+            <i class="fas fa-search text-xl"></i>
           </button>
 
           {{-- Panier --}}
@@ -123,9 +119,7 @@
               @else
                 <div class="p-4 text-center">
                   <div class="text-gray-400 mb-3">
-                    <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5H20"></path>
-                    </svg>
+                    <i class="fas fa-shopping-cart text-5xl"></i>
                   </div>
                   <p class="text-gray-500 text-sm mb-3">Votre panier est vide</p>
                   <a href="{{ get_permalink(wc_get_page_id('shop')) }}" class="inline-block px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-sm">
@@ -165,9 +159,7 @@
 
           {{-- Menu burger mobile --}}
           <button type="button" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-toggle">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
       </div>
@@ -195,9 +187,7 @@
                    value="{{ get_search_query() }}" />
             <input type="hidden" name="post_type" value="product" />
             <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
+              <i class="fas fa-search"></i>
             </button>
           </div>
         </div>
@@ -253,11 +243,11 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
       
       // Changer l'icône du bouton
-      const icon = this.querySelector('svg path');
+      const icon = this.querySelector('i');
       if (mobileMenu.classList.contains('hidden')) {
-        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        icon.className = 'fas fa-bars text-xl';
       } else {
-        icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        icon.className = 'fas fa-times text-xl';
       }
     });
   }
