@@ -1,4 +1,4 @@
-# 🚀 Starter WordPress – Bedrock + Sage 11 + Docker + WooCommerce
+# 🚀 Template WooCommerce – Bedrock + Sage 11 + Docker 
 
 ---
 
@@ -77,7 +77,7 @@ sudo chown -R $USER:www-data web
 sudo chmod -R 775 web
 ```
 
-Modifier le nom du projet sur le **dossier theme** et dans le fichier vite.config.js
+Modifier le nom du projet sur le **dossier theme** et dans le fichier vite.config.js (facultatif)
 
 ```bash
   cd web/app/themes
@@ -97,16 +97,16 @@ docker compose --env-file .env up --build -d
 
 ### 5. Installer les dépendances
 
+Dans le dossier racine
+
+```bash
+composer install
+```
+
 Dans le dossier themes (web/app/themes/mon-projet)
 
 ```bash
 npm install
-composer install
-```
-
-Dans le dossier racine
-
-```bash
 composer install
 ```
 
@@ -143,6 +143,8 @@ npm run build
     > Supprimez les blocs par défaut de ces pages et remplacez-les par les codes courts appropriés :
 `[woocommerce_cart]`
  `[woocommerce_checkout]`
+    
+    
 
 #### Pour augmenter la limite d’upload (facultatif)
 
