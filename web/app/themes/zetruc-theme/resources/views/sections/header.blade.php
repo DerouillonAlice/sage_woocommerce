@@ -17,7 +17,7 @@
         <div class="hidden md:flex flex-1 max-w-2xl mx-8">
           <form role="search" method="get" class="w-full" action="{{ home_url('/') }}">
             <div class="relative flex">
-              <select name="product_cat" class="flex-shrink-0 bg-gray-50 border border-gray-300 rounded-l-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+              <select name="product_cat" class="flex-shrink-0 bg-gray-50 border border-gray-300 rounded-l-lg px-3 py-2.5 text-sm ">
                 <option value="">Toutes catégories</option>
                 @foreach(get_terms('product_cat', ['hide_empty' => true]) as $category)
                   <option value="{{ $category->slug }}" {{ request('product_cat') == $category->slug ? 'selected' : '' }}>
@@ -27,11 +27,11 @@
               </select>
               <input type="search" 
                      name="s" 
-                     class="flex-1 px-4 py-2.5 border-t border-b border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500" 
+                     class="flex-1 px-4 py-2.5 border-t border-b border-gray-300" 
                      placeholder="Rechercher un produit..." 
                      value="{{ get_search_query() }}" />
               <input type="hidden" name="post_type" value="product" />
-              <button type="submit" class="flex-shrink-0 px-6 py-2.5 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+              <button type="submit" class="flex-shrink-0 px-6 py-2.5 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors ">
                 <i class="fas fa-search"></i>
               </button>
             </div>
