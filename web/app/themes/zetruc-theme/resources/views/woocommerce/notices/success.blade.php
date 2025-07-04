@@ -26,7 +26,7 @@ if ( ! $notices ) {
 ?>
 
 <?php foreach ( $notices as $notice ) : ?>
-	<div class="mb-4 p-4 rounded-lg border-l-4 shadow-sm flex items-start" role="alert" style="border-left-color: var(--color-success); background-color: color-mix(in srgb, var(--color-success) 10%, white);"<?php echo wc_get_notice_data_attr( $notice ); ?>>
+	<div class="m-4 p-4 rounded-lg border-l-4 shadow-sm flex items-start" role="alert" style="border-left-color: var(--color-success); background-color: color-mix(in srgb, var(--color-success) 10%, white);"<?php echo wc_get_notice_data_attr( $notice ); ?>>
 		<div class="flex-shrink-0">
 			<i class="fas fa-check-circle text-lg mt-0.5" style="color: var(--color-success);"></i>
 		</div>

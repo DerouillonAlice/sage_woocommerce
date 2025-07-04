@@ -24,10 +24,10 @@ do_action( 'woocommerce_before_account_navigation' );
 
 
 <nav class="woocommerce-MyAccount-navigation" aria-label="<?php esc_html_e( 'Account pages', 'woocommerce' ); ?>">
-	<ul class="flex flex-col md:flex-row gap-2 md:gap-4 bg-gray-50 md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none shadow md:shadow-none">
+	<ul class="flex flex-col md:flex-row justify-center gap-0  lg:gap-4 bg-gray-50 md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none shadow md:shadow-none">
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
+			<?php if ( $endpoint === 'customer-logout' ) continue; // Skip logout button ?>
 			<?php
-				$is_logout = $endpoint === 'customer-logout';
 				$link_classes = 'flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-150 font-medium ';
 				
 				// Icônes pour chaque endpoint
@@ -48,20 +48,13 @@ do_action( 'woocommerce_before_account_navigation' );
 					case 'edit-account':
 						$icon_class = 'fas fa-user-edit';
 						break;
-					case 'customer-logout':
-						$icon_class = 'fas fa-sign-out-alt';
-						break;
 					default:
 						$icon_class = 'fas fa-user';
 				}
 				
-				if ($is_logout) {
-					$link_classes .= 'text-error hover:bg-error-50 hover:text-error-600';
-				} else {
-					$link_classes .= 'text-gray-700 hover:bg-primary-50 hover:text-primary-700 ';
-					if (wc_is_current_account_menu_item($endpoint)) {
-						$link_classes .= 'bg-primary-600 text-white hover:bg-primary-700 hover:text-white ';
-					}
+				$link_classes .= 'text-gray-700 hover:bg-primary-50 hover:text-primary-700 ';
+				if (wc_is_current_account_menu_item($endpoint)) {
+					$link_classes .= 'bg-primary-600 text-white hover:bg-primary-700 hover:text-white ';
 				}
 			?>
 			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">

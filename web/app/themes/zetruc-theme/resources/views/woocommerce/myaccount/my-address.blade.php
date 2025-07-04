@@ -69,7 +69,7 @@ $col    = 1;
 
 	<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
 		<!-- En-tête de la carte d'adresse -->
-		<div class="<?php echo $name === 'billing' ? 'bg-secondary-100  border-secondary-200' : 'bg-primary-100  border-primary-200'; ?> px-6 py-4 border-b">
+		<div class=" px-6 py-4 border-b border-gray-200">
 			<div class="flex items-center justify-between">
 				<div class="flex items-center">
 					<div class="w-10 h-10 <?php echo $name === 'billing' ? 'bg-secondary-100' : 'bg-primary-100'; ?> rounded-lg flex items-center justify-center mr-3">

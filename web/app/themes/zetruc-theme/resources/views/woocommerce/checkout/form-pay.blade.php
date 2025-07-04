@@ -145,7 +145,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
                       <?php
                       if ( ! empty( $available_gateways ) ) {
                         foreach ( $available_gateways as $gateway ) {
-                          echo '<div class="payment-method-wrapper p-4 border border-gray-200 rounded-lg hover:border-primary-300 transition-colors">';
+                          echo '<div class="payment-method-wrapper p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50">';
                           wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
                           echo '</div>';
                         }
@@ -220,8 +220,10 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
   </div>
 </div>
 
+@endsection
+
 <style>
-/* Styles pour les méthodes de paiement */
+/* Styles Tailwind pour les éléments WooCommerce générés dynamiquement */
 .payment-method-wrapper input[type="radio"] {
   @apply w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 focus:ring-2;
 }
@@ -230,20 +232,14 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
   @apply ml-3 text-sm font-medium text-gray-900 cursor-pointer;
 }
 
+.payment-method-wrapper:has(input[type="radio"]:checked) label {
+  @apply text-primary-600;
+}
+
 .payment-method-wrapper .payment_box {
   @apply mt-3 p-4 bg-gray-50 border border-gray-200 rounded-md;
 }
 
-/* Animation pour les méthodes de paiement */
-.payment-method-wrapper:hover {
-  @apply border-primary-300 bg-primary-50;
-}
-
-.payment-method-wrapper input[type="radio"]:checked + label {
-  @apply text-primary-600;
-}
-
-/* Styles pour les termes et conditions */
 .woocommerce-terms-and-conditions-wrapper {
   @apply mt-4;
 }
@@ -260,5 +256,3 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
   @apply text-primary-600 hover:text-primary-700 underline;
 }
 </style>
-
-@endsection

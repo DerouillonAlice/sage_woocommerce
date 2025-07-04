@@ -30,16 +30,16 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 		<form method="post" novalidate class="bg-white rounded-xl border border-gray-200 overflow-hidden">
 			
 			<!-- En-tête du formulaire -->
-			<div class="<?php echo ( 'billing' === $load_address ) ? 'bg-secondary-100 ' : 'bg-primary-100'; ?> px-8 py-6 border-b border-gray-200">
+			<div class="<?php echo ( 'billing' === $load_address ) ? 'bg-secondary ' : 'bg-primary'; ?> text-white px-8 py-6 border-b border-gray-200">
 				<div class="flex items-center">
-					<div class="w-12 h-12 <?php echo ( 'billing' === $load_address ) ? 'bg-secondary-100' : 'bg-primary-100'; ?> rounded-lg flex items-center justify-center mr-4">
+					<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4">
 						<i class="<?php echo ( 'billing' === $load_address ) ? 'fas fa-credit-card text-secondary-600' : 'fas fa-shipping-fast text-primary-600'; ?> text-xl"></i>
 					</div>
 					<div>
-						<h2 class="text-2xl font-bold text-gray-900">
+						<h2 class="text-2xl font-bold ">
 							<?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title, $load_address ); ?>
 						</h2>
-						<p class="text-gray-600 mt-1">
+						<p class=" mt-1">
 							<?php echo ( 'billing' === $load_address ) ? 'Modifiez votre adresse de facturation' : 'Modifiez votre adresse de livraison'; ?>
 						</p>
 					</div>
