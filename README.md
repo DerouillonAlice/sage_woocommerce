@@ -1,4 +1,4 @@
-# 🚀 Starter WordPress – Bedrock + Sage 11 + Docker
+# 🚀 Starter WordPress – Bedrock + Sage 11 + Docker + WooCommerce
 
 ---
 
