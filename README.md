@@ -126,12 +126,23 @@ npm run build
 - [ ] Activer le thème dans Apparence > Thèmes
       
 - [ ] Installer Extension "Advanced Custom Fields	(ACF)" et l'Activer
+      
+- [ ] - [ ] Installer Extension "WooCommerce" et l'Activer
 
 - [ ] Régler les permaliens : Réglages > Permaliens > Titre de la publication
+      
+- [ ] Activer la boutique woocommerce
 
 - [ ] Créer une page d'accueil dans pages
 
 - [ ] Configurer la page d'accueil : Réglages > Lecture > Une page statique > Page d'accueil (sélectionner la page créée)
+      
+- [ ] - Enlever blocs par défauts de Woo commerce et ajouter shortcode
+    
+    > Dans WooCommerce 9.x+, les pages par défaut (Boutique, Panier, Paiement) sont créées avec du contenu par défaut basé sur des blocs. Elles n'utilisent pas de modèles classiques.
+    > Supprimez les blocs par défaut de ces pages et remplacez-les par les codes courts appropriés :
+`[woocommerce_cart]`
+ `[woocommerce_checkout]`
 
 #### Pour augmenter la limite d’upload (facultatif)
 
