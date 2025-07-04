@@ -83,9 +83,9 @@ if ( ! comments_open() ) {
 			}
 			@endphp
 		@else
-			<div class="woocommerce-noreviews  text-secondary-700 p-4 rounded-md flex items-center">
+			<div class="woocommerce-noreviews text-secondary-700 p-4 rounded-md flex items-center">
 				<i class="fas fa-comment-slash text-xl mr-3"></i>
-				<p class="m-0">{{ esc_html__('Il n\'y a pas encore d\'avis.', 'woocommerce') }}</p>
+				<p class="m-0">Il n'y a pas encore d'avis.</p>
 			</div>
 		@endif
 	</div>
