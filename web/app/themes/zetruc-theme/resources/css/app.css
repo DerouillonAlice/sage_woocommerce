@@ -38,7 +38,6 @@
 @source "../views/";
 @source "../../app/";
 
-/* Fix pour les boutons de suppression de coupon */
 .woocommerce-remove-coupon {
   color: #ef4444 !important;
   text-decoration: none !important;
@@ -159,7 +158,7 @@
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.2s ease;
-  z-index: 9999;
+  z-index: 9999 !important;
 }
 
 /* Scrollbar pour l'aperçu du panier */
@@ -183,20 +182,23 @@
 
 /* Assurer que le header reste au-dessus */
 header {
-  z-index: 1000;
+  z-index: 9998 !important;
+  position: sticky !important;
+  top: 0;
+}
+
+/* Menu dropdown utilisateur */
+.menu .sub-menu,
+header .group .absolute {
+  z-index: 9999 !important;
+}
+
+body {
   position: relative;
+  z-index: 1;
 }
 
-/* Animation pour le badge du panier */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .8;
-  }
-}
-
-.cart-badge {
-  animation: pulse 2s infinite;
+main {
+  position: relative;
+  z-index: 2;
 }
