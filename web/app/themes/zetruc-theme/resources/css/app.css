@@ -183,7 +183,6 @@
 /* Assurer que le header reste au-dessus */
 header {
   z-index: 9998 !important;
-  position: sticky !important;
   top: 0;
 }
 

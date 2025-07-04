@@ -21,95 +21,45 @@ if (!defined('ABSPATH')) {
 
 global $product;
 
-$aria_describedby = isset($args['aria-describedby_text']) ? sprintf('aria-describedby="woocommerce_loop_add_to_cart_link_describedby_%s"', esc_attr($product->get_id())) : '';
+if ( ! $product->is_purchasable() ) {
+	return;
+}
 
-$button_classes = 'w-full inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2.5 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group';
-$custom_classes = isset($args['class']) ? $args['class'] : '';
-$final_classes = trim($button_classes . ' ' . $custom_classes);
-
-$product_id = $product->get_id();
+echo wc_get_stock_html( $product ); // WPCS: XSS ok.
 @endphp
 
-<div class="add-to-cart-wrapper relative">
-    @php
-    echo apply_filters(
-        'woocommerce_loop_add_to_cart_link', 
-        sprintf(
-            '<a href="%s" %s data-quantity="%s" class="%s" data-product_id="%s" data-product_sku="%s" %s>
-                <span class="button-text">%s</span>
-                <span class="loading-spinner hidden">
-                    <i class="fas fa-spinner fa-spin h-4 w-4 ml-2"></i>
-                </span>
-            </a>',
-            esc_url($product->add_to_cart_url()),
-            $aria_describedby,
-            esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
-            esc_attr($final_classes),
-            esc_attr($product_id),
-            esc_attr($product->get_sku()),
-            isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
-            esc_html($product->add_to_cart_text())
-        ),
-        $product,
-        $args
-    );
-    @endphp
-    
-    <div class="success-message hidden absolute inset-0 bg-primary-600 text-white flex items-center justify-center rounded-md">
-        <i class="fas fa-check w-5 h-5 mr-2"></i>
-        <span>Ajouté </span>
-    </div>
-</div>
+@if($product->is_in_stock())
 
-@if(isset($args['aria-describedby_text']))
-    <span id="woocommerce_loop_add_to_cart_link_describedby_{{ esc_attr($product->get_id()) }}" class="sr-only">
-        {{ esc_html($args['aria-describedby_text']) }}
-    </span>
+	@php do_action('woocommerce_before_add_to_cart_form'); @endphp
+
+	<form class="cart" action="{{ esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())) }}" method="post" enctype='multipart/form-data'>
+		@php do_action('woocommerce_before_add_to_cart_button'); @endphp
+
+		<div class="flex items-center gap-2">
+			@php
+			do_action('woocommerce_before_add_to_cart_quantity');
+
+			woocommerce_quantity_input(
+				array(
+					'min_value'   => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
+					'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
+					'input_value' => isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity(),
+					'classes'     => apply_filters('woocommerce_quantity_input_classes', array( 'border', 'border-gray-300', 'text-gray-900', 'text-sm', 'rounded-md', 'focus:ring-primary-500', 'focus:border-primary-500', 'block', 'w-16', 'p-2', 'text-center')),
+				)
+			);
+
+			do_action('woocommerce_after_add_to_cart_quantity');
+			@endphp
+
+			<button type="submit" name="add-to-cart" value="{{ esc_attr($product->get_id()) }}" 
+					class="flex-1 inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+				{{ esc_html($product->single_add_to_cart_text()) }}
+			</button>
+		</div>
+
+		@php do_action('woocommerce_after_add_to_cart_button'); @endphp
+	</form>
+
+	@php do_action('woocommerce_after_add_to_cart_form'); @endphp
+
 @endif
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.add-to-cart-wrapper a[data-product_id]').forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            const wrapper = this.closest('.add-to-cart-wrapper');
-            const buttonText = this.querySelector('.button-text');
-            const spinner = this.querySelector('.loading-spinner');
-            const successMessage = wrapper.querySelector('.success-message');
-            
-            if (this.getAttribute('href').includes('add-to-cart=')) {
-                e.preventDefault();
-                
-                this.disabled = true;
-                buttonText.textContent = 'Ajout...';
-                spinner.classList.remove('hidden');
-                
-                fetch(this.href, {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => response.text())
-                .then(data => {
-                    successMessage.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        successMessage.classList.add('hidden');
-                        this.disabled = false;
-                        buttonText.textContent = 'Ajouter au panier';
-                        spinner.classList.add('hidden');
-                        
-                        document.body.dispatchEvent(new Event('wc_fragment_refresh'));
-                    }, 2000);
-                })
-                .catch(error => {
-                    this.disabled = false;
-                    buttonText.textContent = 'Ajouter au panier';
-                    spinner.classList.add('hidden');
-                    console.error('Erreur:', error);
-                });
-            }
-        });
-    });
-});
-</script>
