@@ -43,7 +43,7 @@ npm install -g npm
 ### 1. Cloner le repo
 
 ```bash
-git clone git@github.com:DerouillonAlice/wordpress-with-sage-template.git mon-projet
+git clone git@bitbucket.org:zetructeam/zetruc_woocommerce_starter.git mon-projet
 cd mon-projet
 ```
 
