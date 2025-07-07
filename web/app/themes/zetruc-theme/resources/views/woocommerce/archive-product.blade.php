@@ -14,7 +14,7 @@ The Template for displaying product archives, including the main shop page which
 
   <div class="container mx-auto px-4 lg:px-6">
     @if (woocommerce_product_loop())
-      <div class="mb-8 flex justify-end gap-16 items-center">
+      <div class="flex flex-col justify-end gap-8 items-center">
         @php do_action('woocommerce_before_shop_loop'); @endphp
       </div>
 

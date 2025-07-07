@@ -26,9 +26,10 @@ $per_page = wc_get_loop_prop('per_page');
 $current  = wc_get_loop_prop('current_page');
 $orderedby = isset($orderedby) ? $orderedby : '';
 ?>
-<div class="woocommerce-result-count flex items-center gap-2 text-sm text-gray-600" role="alert" aria-relevant="all" <?php echo ( empty( $orderedby ) || 1 === intval( $total ) ) ? '' : 'data-is-sorted-by=\"true\"'; ?>>
-  <i class="fas fa-list w-4 h-4 text-gray-400"></i>
-  <span class="font-medium">
+<div class="flex w-full flex-col sm:flex-row justify-between flex-start sm:items-center gap-8 mb-4">
+  <div class="woocommerce-result-count flex items-center gap-2 text-sm text-gray-600">
+    <i class="fas fa-list w-4 h-4 text-gray-400"></i>
+    <span class="font-medium">
     <?php
     // phpcs:disable WordPress.Security
     if ( 1 === intval( $total ) ) {

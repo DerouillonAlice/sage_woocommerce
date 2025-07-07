@@ -75,7 +75,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 					<button type="submit" class="woocommerce-button button woocommerce-form-login__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>">
 						<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-							<i class="fas fa-sign-in-alt h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors"></i>
+							<i class="fas fa-sign-in-alt text-primary-300 group-hover:text-primary-400 transition-colors"></i>
 						</span>
 						<?php esc_html_e( 'Log in', 'woocommerce' ); ?>
 					</button>

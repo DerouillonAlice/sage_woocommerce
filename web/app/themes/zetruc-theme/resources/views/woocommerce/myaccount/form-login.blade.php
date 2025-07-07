@@ -61,7 +61,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						</label>
 						<div class="relative">
 							<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-								<i class="fas fa-user h-5 w-5 text-gray-400"></i>
+								<i class="fas fa-user text-gray-400"></i>
 							</div>
 							<input type="text" class="woocommerce-Input woocommerce-Input--text input-text block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="votre@email.com" /><?php // @codingStandardsIgnoreLine ?>
 						</div>
@@ -93,7 +93,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 						<button type="submit" class="woocommerce-button button woocommerce-form-login__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>">
 							<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-								<i class="fas fa-sign-in-alt h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors"></i>
+								<i class="fas fa-sign-in-alt text-primary-300 group-hover:text-primary-400 transition-colors"></i>
 							</span>
 							<?php esc_html_e( 'Log in', 'woocommerce' ); ?>
 						</button>
@@ -136,7 +136,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						</label>
 						<div class="relative">
 							<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-								<i class="fas fa-envelope h-5 w-5 text-gray-400"></i>
+								<i class="fas fa-envelope text-gray-400"></i>
 							</div>
 							<input type="email" class="woocommerce-Input woocommerce-Input--text input-text block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" placeholder="votre@email.com" /><?php // @codingStandardsIgnoreLine ?>
 						</div>
@@ -162,7 +162,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						<div class="bg-secondary-50 border border-secondary-200 rounded-lg p-4">
 							<div class="flex">
 								<div class="flex-shrink-0">
-									<i class="fas fa-info-circle h-5 w-5 text-secondary-400"></i>
+									<i class="fas fa-info-circle text-secondary-400"></i>
 								</div>
 								<div class="ml-3">
 									<p class="text-sm text-secondary-700"><?php esc_html_e( 'A link to set a new password will be sent to your email address.', 'woocommerce' ); ?></p>
@@ -178,7 +178,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
 						<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>">
 							<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-								<i class="fas fa-user-plus h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors"></i>
+								<i class="fas fa-user-plus  text-primary-300 group-hover:text-primary-400 transition-colors"></i>
 							</span>
 							<?php esc_html_e( 'Register', 'woocommerce' ); ?>
 						</button>
@@ -217,7 +217,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					</label>
 					<div class="relative">
 						<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-							<i class="fas fa-user h-5 w-5 text-gray-400"></i>
+							<i class="fas fa-user  text-gray-400"></i>
 						</div>
 						<input type="text" class="woocommerce-Input woocommerce-Input--text input-text block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" placeholder="votre@email.com" /><?php // @codingStandardsIgnoreLine ?>
 					</div>
@@ -247,7 +247,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 					<button type="submit" class="woocommerce-button button woocommerce-form-login__submit group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>">
 						<span class="absolute left-0 inset-y-0 flex items-center pl-3">
-							<i class="fas fa-sign-in-alt h-5 w-5 text-primary-300 group-hover:text-primary-400 transition-colors"></i>
+							<i class="fas fa-sign-in-alt  text-primary-300 group-hover:text-primary-400 transition-colors"></i>
 						</span>
 						<?php esc_html_e( 'Log in', 'woocommerce' ); ?>
 					</button>
