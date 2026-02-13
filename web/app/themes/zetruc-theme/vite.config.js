@@ -4,7 +4,7 @@ import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin'
 
 export default defineConfig({
-  base: '/app/themes/zetruc-theme/public/build/',
+  base: '/app/themes/zetructheme-/public/build/',
   plugins: [
     tailwindcss(),
     laravel({
