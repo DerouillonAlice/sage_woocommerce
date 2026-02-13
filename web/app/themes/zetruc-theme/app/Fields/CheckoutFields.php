@@ -14,7 +14,7 @@ class CheckoutFields
 
     public function register()
     {
-        if (!function_exists('acf_add_local_field_group')) {
+        if (!function_exists('acf_add_local_field_group') || !function_exists('\wc_get_page_id')) {
             return;
         }
 

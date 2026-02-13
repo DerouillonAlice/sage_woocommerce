@@ -16,16 +16,6 @@ add_action('after_setup_theme', function () {
     add_theme_support('wc-product-gallery-slider');
 }, 20);
 
-
-
-add_action('plugins_loaded', function () {
-    // Check if WooCommerce is active and loaded
-    if (class_exists('WooCommerce')) {
-        // Force re-load of textdomain correctly
-        remove_action('plugins_loaded', [WC(), 'load_plugin_textdomain']);
-        add_action('init', [WC(), 'load_plugin_textdomain'], 0);
-    }
-});
 /**
  * Init-related actions/hooks that depend on WooCommerce
  */
