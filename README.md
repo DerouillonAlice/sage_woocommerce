@@ -77,7 +77,7 @@ sudo chown -R $USER:www-data web
 sudo chmod -R 775 web
 ```
 
-Modifier le nom du projet sur le **dossier theme** et dans le fichier vite.config.js
+(Optionnel) Modifier le nom du projet sur le **dossier theme** et dans le fichier vite.config.js
 
 ```bash
   cd web/app/themes
@@ -97,6 +97,12 @@ docker compose --env-file .env up --build -d
 
 ### 5. Installer les dépendances
 
+Dans le dossier racine
+
+```bash
+composer install
+```
+
 Dans le dossier themes (web/app/themes/mon-projet)
 
 ```bash
@@ -104,13 +110,7 @@ npm install
 composer install
 ```
 
-Dans le dossier racine
-
-```bash
-composer install
-```
-
-Compilation (dans le dossier du thème)
+Compilation (toujours dans le dossier du thème)
 
 ```bash
 npm run build
@@ -123,9 +123,13 @@ npm run build
 
 - [ ] Installer WordPress normalement (compte admin, nom du site…)
 
+**Veuillez installer les extensions AVANT d'activer le thème** pour éviter tout problème de fonctionnalités manquantes :
+
+- [ ] Installer Extension "Advanced Custom Fields (ACF)" et l'Activer
+- [ ] Installer Extension "WooCommerce" et l'Activer
 - [ ] Activer le thème dans Apparence > Thèmes
-      
-- [ ] Installer Extension "Advanced Custom Fields	(ACF)" et l'Activer
+
+#### Configuration finale
 
 - [ ] Régler les permaliens : Réglages > Permaliens > Titre de la publication
 
