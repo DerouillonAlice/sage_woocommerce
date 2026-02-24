@@ -37,7 +37,7 @@
     "oscarotero/env": "^2.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
-    "roots/wordpress": "^6.8",
+    "roots/wordpress": "^6.9",
     "roots/wp-config": "1.0.0",
     "roots/acorn": "^5.0",
     "log1x/acf-composer": "^3.4"
