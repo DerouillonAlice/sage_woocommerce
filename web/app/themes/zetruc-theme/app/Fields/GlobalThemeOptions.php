@@ -43,7 +43,7 @@ class GlobalThemeOptions
      */
     public function register_options_page(): void
     {
-        if (!function_exists('acf_add_options_page')) {
+        if (!function_exists('acf_is_pro') || !acf_is_pro()) {
             return;
         }
 
@@ -64,7 +64,7 @@ class GlobalThemeOptions
      */
     public function register_fields(): void
     {
-        if (!function_exists('acf_add_local_field_group')) {
+        if (!function_exists('acf_is_pro') || !acf_is_pro() || !function_exists('acf_add_local_field_group')) {
             return;
         }
 
