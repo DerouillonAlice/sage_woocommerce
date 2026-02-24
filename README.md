@@ -156,7 +156,13 @@ Remplacer `VOTRE-CLE-DE-LICENCE-ACF-PRO` par votre clé de licence (disponible s
 composer require wpengine/advanced-custom-fields-pro
 ```
 
-Une fois installé, la page **Paramètres du site** apparaît automatiquement dans le menu WordPress (adresse, téléphone, email, réseaux sociaux, formulaire de contact).
+#### 3. Activer le plugin
+
+- [ ] Aller dans Extensions > Extensions installées
+- [ ] Activer **Advanced Custom Fields PRO**
+- [ ] Désactiver et supprimer l'extension **Advanced Custom Fields** (gratuite) si installée précédemment, elle n'est plus nécessaire avec la version Pro
+
+Une fois activé, la page **Paramètres du site** apparaît automatiquement dans le menu WordPress (adresse, téléphone, email, réseaux sociaux, formulaire de contact).
 
 > **Note :** Sans ACF Pro, le thème fonctionne normalement — les fonctionnalités Pro sont simplement désactivées.
 
