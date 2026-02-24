@@ -131,23 +131,15 @@ npm run build
 
 **Veuillez installer les extensions AVANT d'activer le thème** pour éviter tout problème de fonctionnalités manquantes :
 
-- [ ] Installer Extension "Advanced Custom Fields (ACF)" et l'Activer (ou ACF Pro, voir section ci-dessous)
+- [ ] Installer Extension **"Advanced Custom Fields (ACF)"** et l'Activer — **ou** installer **ACF Pro** (voir ci-dessous)
 - [ ] Installer Extension "WooCommerce" et l'Activer
 - [ ] Activer le thème dans Apparence > Thèmes
 
-#### Configuration finale
+#### ACF Pro (optionnel)
 
-- [ ] Régler les permaliens : Réglages > Permaliens > Titre de la publication
+Le thème fonctionne avec ACF gratuit. Si vous disposez d'une licence ACF Pro, des fonctionnalités supplémentaires sont disponibles (exemple: page d'options globales du site). ACF Pro peut être installé à tout moment, même après la mise en place du projet, sans aucun problème.
 
-- [ ] Créer une page d'accueil dans pages
-
-- [ ] Configurer la page d'accueil : Réglages > Lecture > Une page statique > Page d'accueil (sélectionner la page créée)
-
-### ACF Pro (optionnel)
-
-Le thème fonctionne avec ACF gratuit. Si vous disposez d'une licence ACF Pro, des fonctionnalités supplémentaires sont disponibles (page d'options globales du site).
-
-#### 1. Configurer l'authentification
+Pour installer ACF Pro via Composer (dans le dossier racine) :
 
 ```bash
 cp auth.json.example auth.json
@@ -162,7 +154,7 @@ Remplacer `VOTRE-CLE-DE-LICENCE-ACF-PRO` par votre clé de licence (disponible s
 composer require wpengine/advanced-custom-fields-pro
 ```
 
-#### 3. Activer le plugin
+Puis dans WordPress :
 
 - [ ] Aller dans Extensions > Extensions installées
 - [ ] Activer **Advanced Custom Fields PRO**
@@ -171,6 +163,14 @@ composer require wpengine/advanced-custom-fields-pro
 Une fois activé, la page **Paramètres du site** apparaît automatiquement dans le menu WordPress (adresse, téléphone, email, réseaux sociaux, formulaire de contact).
 
 > **Note :** Sans ACF Pro, le thème fonctionne normalement — les fonctionnalités Pro sont simplement désactivées.
+
+#### Configuration finale
+
+- [ ] Régler les permaliens : Réglages > Permaliens > Titre de la publication
+
+- [ ] Créer une page d'accueil dans pages
+
+- [ ] Configurer la page d'accueil : Réglages > Lecture > Une page statique > Page d'accueil (sélectionner la page créée)
 
 ---
 
