@@ -49,6 +49,12 @@ cd mon-projet
 
 ### 2. Initialisation
 
+Si problèmes de permission de fichier avec git, exécuter cette commande pour les ignorer :
+
+```bash
+git config core.fileMode false
+```
+
 Renommer le docker compose
 
 ```bash
