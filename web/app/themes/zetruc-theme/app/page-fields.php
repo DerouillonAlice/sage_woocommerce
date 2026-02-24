@@ -3,6 +3,7 @@
 use App\Fields\ExemplePageFields;
 use App\Fields\CartFields;
 use App\Fields\CheckoutFields;
+use App\Fields\GlobalThemeOptions;
 use App\Fields\HomePageFields;
 use App\Fields\ProductFields;
 
@@ -12,4 +13,5 @@ new ExemplePageFields();
 new CartFields();
 new HomePageFields();
 new ProductFields();
-new CheckoutFields();   
+new CheckoutFields();
+new GlobalThemeOptions();   
