@@ -156,6 +156,12 @@ add_action('widgets_init', function () {
     ] + $config);
 });
 
+add_action('after_setup_theme', function () {
+  add_theme_support('editor-styles');   // autorise les styles éditeur
+  add_theme_support('wp-block-styles'); // (optionnel) styles par défaut WP
+  add_editor_style(asset('styles/editor.css')->uri()); // fichier compilé
+});
+
 require_once __DIR__ . '/image-sizes.php';
 
 
