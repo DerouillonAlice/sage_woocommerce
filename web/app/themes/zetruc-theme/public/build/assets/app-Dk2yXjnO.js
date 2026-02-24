@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){document.addEventListener("click",function(e){const o=e.target.closest(".woocommerce-remove-coupon");if(o&&o.href&&o.href!=="#"){e.preventDefault();const n=o.getAttribute("data-coupon"),t=new URL(window.location);t.searchParams.set("remove_coupon",n),window.location.href=t.toString()}})});
