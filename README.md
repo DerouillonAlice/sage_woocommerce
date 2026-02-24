@@ -49,6 +49,12 @@ cd mon-projet
 
 ### 2. Initialisation
 
+Si problèmes de permission de fichier avec git, exécuter cette commande pour les ignorer :
+
+```bash
+git config core.fileMode false
+```
+
 Renommer le docker compose
 
 ```bash
@@ -125,7 +131,7 @@ npm run build
 
 **Veuillez installer les extensions AVANT d'activer le thème** pour éviter tout problème de fonctionnalités manquantes :
 
-- [ ] Installer Extension "Advanced Custom Fields (ACF)" et l'Activer
+- [ ] Installer Extension "Advanced Custom Fields (ACF)" et l'Activer (ou ACF Pro, voir section ci-dessous)
 - [ ] Installer Extension "WooCommerce" et l'Activer
 - [ ] Activer le thème dans Apparence > Thèmes
 
@@ -137,7 +143,38 @@ npm run build
 
 - [ ] Configurer la page d'accueil : Réglages > Lecture > Une page statique > Page d'accueil (sélectionner la page créée)
 
-#### Pour augmenter la limite d’upload (facultatif)
+### ACF Pro (optionnel)
+
+Le thème fonctionne avec ACF gratuit. Si vous disposez d'une licence ACF Pro, des fonctionnalités supplémentaires sont disponibles (page d'options globales du site).
+
+#### 1. Configurer l'authentification
+
+```bash
+cp auth.json.example auth.json
+nano auth.json
+```
+
+Remplacer `VOTRE-CLE-DE-LICENCE-ACF-PRO` par votre clé de licence (disponible sur votre compte ACF Pro).
+
+#### 2. Installer ACF Pro via Composer
+
+```bash
+composer require wpengine/advanced-custom-fields-pro
+```
+
+#### 3. Activer le plugin
+
+- [ ] Aller dans Extensions > Extensions installées
+- [ ] Activer **Advanced Custom Fields PRO**
+- [ ] Désactiver et supprimer l'extension **Advanced Custom Fields** (gratuite) si installée précédemment, elle n'est plus nécessaire avec la version Pro
+
+Une fois activé, la page **Paramètres du site** apparaît automatiquement dans le menu WordPress (adresse, téléphone, email, réseaux sociaux, formulaire de contact).
+
+> **Note :** Sans ACF Pro, le thème fonctionne normalement — les fonctionnalités Pro sont simplement désactivées.
+
+---
+
+#### Pour augmenter la limite d'upload (facultatif)
 
 Ajouter dans web/.htaccess :
 

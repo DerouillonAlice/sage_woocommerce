@@ -95,6 +95,11 @@ class GlobalSettings
 
     public function __construct()
     {
+        // Si ACF Pro est actif, GlobalThemeOptions remplace ce CPT
+        if (function_exists('acf_is_pro') && acf_is_pro()) {
+            return;
+        }
+
         add_action('init', [$this, 'register']);
         add_action('acf/init', [$this, 'register_acf_fields']);
         add_action('acf/save_post', [$this, 'save_to_options'], 20);

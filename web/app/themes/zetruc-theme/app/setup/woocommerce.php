@@ -18,14 +18,11 @@ add_action('after_setup_theme', function () {
 
 
 
-add_action('plugins_loaded', function () {
-    // Check if WooCommerce is active and loaded
+add_action('init', function () {
     if (class_exists('WooCommerce')) {
-        // Force re-load of textdomain correctly
-        remove_action('plugins_loaded', [WC(), 'load_plugin_textdomain']);
-        add_action('init', [WC(), 'load_plugin_textdomain'], 0);
+        load_plugin_textdomain('woocommerce', false, dirname(WC_PLUGIN_BASENAME) . '/i18n/languages');
     }
-});
+}, 0);
 /**
  * Init-related actions/hooks that depend on WooCommerce
  */
