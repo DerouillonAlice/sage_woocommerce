@@ -95,11 +95,18 @@ class GlobalSettings
 
     public function __construct()
     {
-        add_action('init', [$this, 'register']);
-        add_action('acf/init', [$this, 'register_acf_fields']);
-        add_action('acf/save_post', [$this, 'save_to_options'], 20);
-        add_action('wp', [$this, 'share_with_views']);
-        add_action('admin_menu', [$this, 'redirect_to_edit'], 99);
+        // Si ACF Pro est actif, GlobalThemeOptions remplace ce CPT
+        add_action('plugins_loaded', function () {
+            if (function_exists('acf_add_options_page')) {
+                return;
+            }
+
+            add_action('init', [$this, 'register']);
+            add_action('acf/init', [$this, 'register_acf_fields']);
+            add_action('acf/save_post', [$this, 'save_to_options'], 20);
+            add_action('wp', [$this, 'share_with_views']);
+            add_action('admin_menu', [$this, 'redirect_to_edit'], 99);
+        });
     }
 
     public function register()
