@@ -14,22 +14,22 @@
           {{ $footer_about_content ?? 'Votre boutique en ligne de confiance. Nous proposons des produits de qualité avec un service client exceptionnel et une livraison rapide.' }}
         </p>
         <div class="flex space-x-4">
-          @if($social_facebook)
+          @if($social_facebook ?? null)
             <a href="{{ $social_facebook }}" class="text-gray-400 hover:text-primary transition-colors">
               <i class="fab fa-facebook-f text-xl"></i>
             </a>
           @endif
-          @if($social_twitter)
+          @if($social_twitter ?? null)
             <a href="{{ $social_twitter }}" class="text-gray-400 hover:text-primary transition-colors">
               <i class="fab fa-twitter text-xl"></i>
             </a>
           @endif
-          @if($social_instagram)
+          @if($social_instagram ?? null)
             <a href="{{ $social_instagram }}" class="text-gray-400 hover:text-primary transition-colors">
               <i class="fab fa-instagram text-xl"></i>
             </a>
           @endif
-          @if($social_linkedin)
+          @if($social_linkedin ?? null)
             <a href="{{ $social_linkedin }}" class="text-gray-400 hover:text-primary transition-colors">
               <i class="fab fa-linkedin-in text-xl"></i>
             </a>
@@ -45,10 +45,10 @@
           @if(function_exists('wc_get_page_permalink'))
             <li><a href="{{ wc_get_page_permalink('shop') }}" class="text-gray-400 hover:text-primary transition-colors">Boutique</a></li>
           @endif
-          @if($footer_about_link_url)
+          @if($footer_about_link_url ?? null)
             <li><a href="{{ $footer_about_link_url['url'] ?? '#' }}" class="text-gray-400 hover:text-primary transition-colors" @if($footer_about_link_url['target'] ?? false) target="{{ $footer_about_link_url['target'] }}" @endif>{{ $footer_about_link_url['title'] ?? 'À propos' }}</a></li>
           @endif
-          @if($footer_contact_link_url)
+          @if($footer_contact_link_url ?? null)
             <li><a href="{{ $footer_contact_link_url['url'] ?? '#' }}" class="text-gray-400 hover:text-primary transition-colors" @if($footer_contact_link_url['target'] ?? false) target="{{ $footer_contact_link_url['target'] }}" @endif>{{ $footer_contact_link_url['title'] ?? 'Contact' }}</a></li>
           @endif
         </ul>
@@ -62,13 +62,13 @@
             <li><a href="{{ wc_get_page_permalink('myaccount') }}" class="text-gray-400 hover:text-primary transition-colors">Mon compte</a></li>
             <li><a href="{{ wc_get_page_permalink('cart') }}" class="text-gray-400 hover:text-primary transition-colors">Panier</a></li>
           @endif
-          @if($footer_delivery_link_url)
+          @if($footer_delivery_link_url ?? null)
             <li><a href="{{ $footer_delivery_link_url['url'] ?? '#' }}" class="text-gray-400 hover:text-primary transition-colors" @if($footer_delivery_link_url['target'] ?? false) target="{{ $footer_delivery_link_url['target'] }}" @endif>{{ $footer_delivery_link_url['title'] ?? 'Livraison' }}</a></li>
           @endif
-          @if($footer_returns_link_url)
+          @if($footer_returns_link_url ?? null)
             <li><a href="{{ $footer_returns_link_url['url'] ?? '#' }}" class="text-gray-400 hover:text-primary transition-colors" @if($footer_returns_link_url['target'] ?? false) target="{{ $footer_returns_link_url['target'] }}" @endif>{{ $footer_returns_link_url['title'] ?? 'Retours' }}</a></li>
           @endif
-          @if($footer_faq_link_url)
+          @if($footer_faq_link_url ?? null)
             <li><a href="{{ $footer_faq_link_url['url'] ?? '#' }}" class="text-gray-400 hover:text-primary transition-colors" @if($footer_faq_link_url['target'] ?? false) target="{{ $footer_faq_link_url['target'] }}" @endif>{{ $footer_faq_link_url['title'] ?? 'FAQ' }}</a></li>
           @endif
         </ul>
@@ -79,10 +79,10 @@
     <div class="border-t border-gray-700 mt-8 pt-6 text-center">
       <p class="text-gray-400">
         © {{ date('Y') }} {{ get_bloginfo('name') }}. {{ $footer_copyright_text ?? 'Tous droits réservés.' }} | 
-        @if($footer_legal_mentions_link_url)
-          <a href="{{ $footer_legal_mentions_link_url['url'] ?? '#' }}" class="hover:text-primary transition-colors" @if($footer_legal_mentions_link_url['target'] ?? false) target="{{ $footer_legal_mentions_link_url['target'] }}" @endif>{{ $footer_legal_mentions_link_url['title'] ?? 'Mentions légales' }}</a> | 
+        @if($footer_legal_mentions_link_url ?? null)
+          <a href="{{ $footer_legal_mentions_link_url['url'] ?? '#' }}" class="hover:text-primary transition-colors" @if($footer_legal_mentions_link_url['target'] ?? false) target="{{ $footer_legal_mentions_link_url['target'] }}" @endif>{{ $footer_legal_mentions_link_url['title'] ?? 'Mentions légales' }}</a> |
         @endif
-        @if($footer_privacy_policy_link_url)
+        @if($footer_privacy_policy_link_url ?? null)
           <a href="{{ $footer_privacy_policy_link_url['url'] ?? '#' }}" class="hover:text-primary transition-colors" @if($footer_privacy_policy_link_url['target'] ?? false) target="{{ $footer_privacy_policy_link_url['target'] }}" @endif>{{ $footer_privacy_policy_link_url['title'] ?? 'Politique de confidentialité' }}</a>
         @endif
       </p>
